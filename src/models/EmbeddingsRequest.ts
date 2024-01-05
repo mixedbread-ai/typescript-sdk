@@ -13,6 +13,13 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { EmbeddingsRequestInput } from './EmbeddingsRequestInput';
+import {
+    EmbeddingsRequestInputFromJSON,
+    EmbeddingsRequestInputFromJSONTyped,
+    EmbeddingsRequestInputToJSON,
+} from './EmbeddingsRequestInput';
+
 /**
  * 
  * @export
@@ -20,11 +27,11 @@ import { exists, mapValues } from '../runtime';
  */
 export interface EmbeddingsRequest {
     /**
-     * A list of texts for which the embedding should be generated.
-     * @type {Array<string>}
+     * 
+     * @type {EmbeddingsRequestInput}
      * @memberof EmbeddingsRequest
      */
-    texts?: Array<string>;
+    input?: EmbeddingsRequestInput;
     /**
      * Specifies the model to be used for generating embeddings.
      * @type {string}
@@ -37,6 +44,12 @@ export interface EmbeddingsRequest {
      * @memberof EmbeddingsRequest
      */
     instruction?: string;
+    /**
+     * Specifies whether the embeddings should be normalized.
+     * @type {boolean}
+     * @memberof EmbeddingsRequest
+     */
+    normalized?: boolean;
 }
 
 /**
@@ -58,9 +71,10 @@ export function EmbeddingsRequestFromJSONTyped(json: any, ignoreDiscriminator: b
     }
     return {
         
-        'texts': !exists(json, 'texts') ? undefined : json['texts'],
+        'input': !exists(json, 'input') ? undefined : EmbeddingsRequestInputFromJSON(json['input']),
         'model': !exists(json, 'model') ? undefined : json['model'],
         'instruction': !exists(json, 'instruction') ? undefined : json['instruction'],
+        'normalized': !exists(json, 'normalized') ? undefined : json['normalized'],
     };
 }
 
@@ -73,9 +87,10 @@ export function EmbeddingsRequestToJSON(value?: EmbeddingsRequest | null): any {
     }
     return {
         
-        'texts': value.texts,
+        'input': EmbeddingsRequestInputToJSON(value.input),
         'model': value.model,
         'instruction': value.instruction,
+        'normalized': value.normalized,
     };
 }
 

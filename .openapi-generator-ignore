@@ -23,3 +23,5 @@
 #!docs/README.md
 
 src/runtime.ts
+README.md
+package.json

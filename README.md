@@ -1,46 +1,36 @@
-## @mixedbread-ai/sdk@1.0.0
+# mixedbread ai TypeScript SDK
 
-This generator creates TypeScript/JavaScript client that utilizes [Fetch API](https://fetch.spec.whatwg.org/). The generated Node module can be used in the following environments:
+## Introduction to mixedbread ai
+mixedbread ai is a cutting-edge research and development company specializing in Natural Language Processing (NLP). At our core, we focus on advancing the field of NLP through innovative research, offering powerful tools for embeddings, retrieval, and other NLP functionalities. Our mission is to make NLP accessible to everyone on every device. To learn more about mixedbread ai, visit our [website](https://mixedbread.ai/).
 
-Environment
-* Node.js
-* Webpack
-* Browserify
+## Installation and Setup
 
-Language level
-* ES5 - you must have a Promises/A+ library installed
-* ES6
+To start using the mixedbread ai SDK in your project, install it via npm (Node Package Manager). Ensure Node.js is installed in your environment beforehand.
 
-Module system
-* CommonJS
-* ES6 module system
+### Installation
 
-It can be used in both TypeScript and JavaScript. In TypeScript, the definition should be automatically resolved via `package.json`. ([Reference](http://www.typescriptlang.org/docs/handbook/typings-for-npm-packages.html))
+Run the following command in your project directory to install the SDK:
 
-### Building
-
-To build and compile the typescript sources to javascript use:
-```
-npm install
-npm run build
+```bash
+npm install @mixedbread-ai/sdk --save
 ```
 
-### Publishing
+## Usage Example
 
-First build the package then run ```npm publish```
+Here's an example of using the mixedbread ai SDK to create embeddings:
 
-### Consuming
+```typescript
+import { MixedbreadAiApi, Configuration, EmbeddingsRequest } from "@mixedbread-ai/sdk";
 
-navigate to the folder of your consuming project and run one of the following commands.
+process.env.MIXEDBREADAI_API_KEY="{YOUR_API_KEY}"
 
-_published:_
+const client = new MixedbreadAiApi();
+const embeddings = await client.embeddings({
+    texts: ["Hello world!"],
+    model: "e5-large-v2"
+})
 
+console.log(embeddings)
 ```
-npm install @mixedbread-ai/sdk@1.0.0 --save
-```
 
-_unPublished (not recommended):_
-
-```
-npm install PATH_TO_GENERATED_PACKAGE --save
-# typescript-sdk
+Replace `"{YOUR_API_KEY}"` with your actual API key. If you don't hav e an API key, you can get one for free by signing up for an account at [mixedbread.ai](https://mixedbread.ai/).
