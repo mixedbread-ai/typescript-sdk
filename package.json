@@ -1,11 +1,12 @@
 {
   "name": "@mixedbread-ai/sdk",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "OpenAPI client for @mixedbread-ai/sdk",
   "author": "OpenAPI-Generator",
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/GIT_USER_ID/GIT_REPO_ID.git"
+    "url": "git+https://github.com/mixedbread-ai/typescript-sdk.git"
   },
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
