@@ -1,0 +1,17 @@
+.gitignore
+.npmignore
+.openapi-generator-ignore
+README.md
+package.json
+src/apis/MixedbreadAiApi.ts
+src/apis/index.ts
+src/index.ts
+src/models/Embeddings200Response.ts
+src/models/Embeddings200ResponseDataInner.ts
+src/models/Embeddings200ResponseUsage.ts
+src/models/EmbeddingsRequest.ts
+src/models/ErrorResponse.ts
+src/models/index.ts
+src/runtime.ts
+tsconfig.esm.json
+tsconfig.json
