@@ -2,13 +2,12 @@
 .npmignore
 src/apis/MixedbreadAiApi.ts
 src/apis/index.ts
+src/models/Embedding.ts
 src/models/EmbeddingsRequest.ts
 src/models/EmbeddingsResponse.ts
-src/models/EmbeddingsResponseDataInner.ts
 src/models/ErrorResponse.ts
 src/models/ModelBaseResponse.ts
-src/models/ModelBaseResponseUsage.ts
+src/models/ModelUsage.ts
 src/models/index.ts
 src/runtime.ts
 tsconfig.esm.json
-tsconfig.json

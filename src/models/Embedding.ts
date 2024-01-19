@@ -16,55 +16,57 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface EmbeddingsResponseDataInner
+ * @interface Embedding
  */
-export interface EmbeddingsResponseDataInner {
+export interface Embedding {
     /**
      * The generated embeddings.
      * @type {Array<number>}
-     * @memberof EmbeddingsResponseDataInner
+     * @memberof Embedding
      */
-    embedding?: Array<number>;
+    embedding: Array<number>;
     /**
      * Index of the request text the embedding corresponds to.
      * @type {number}
-     * @memberof EmbeddingsResponseDataInner
+     * @memberof Embedding
      */
-    index?: number;
+    index: number;
     /**
      * Indicates if the text was truncated for the model.
      * @type {boolean}
-     * @memberof EmbeddingsResponseDataInner
+     * @memberof Embedding
      */
     truncated?: boolean;
 }
 
 /**
- * Check if a given object implements the EmbeddingsResponseDataInner interface.
+ * Check if a given object implements the Embedding interface.
  */
-export function instanceOfEmbeddingsResponseDataInner(value: object): boolean {
+export function instanceOfEmbedding(value: object): boolean {
     let isInstance = true;
+    isInstance = isInstance && "embedding" in value;
+    isInstance = isInstance && "index" in value;
 
     return isInstance;
 }
 
-export function EmbeddingsResponseDataInnerFromJSON(json: any): EmbeddingsResponseDataInner {
-    return EmbeddingsResponseDataInnerFromJSONTyped(json, false);
+export function EmbeddingFromJSON(json: any): Embedding {
+    return EmbeddingFromJSONTyped(json, false);
 }
 
-export function EmbeddingsResponseDataInnerFromJSONTyped(json: any, ignoreDiscriminator: boolean): EmbeddingsResponseDataInner {
+export function EmbeddingFromJSONTyped(json: any, ignoreDiscriminator: boolean): Embedding {
     if ((json === undefined) || (json === null)) {
         return json;
     }
     return {
         
-        'embedding': !exists(json, 'embedding') ? undefined : json['embedding'],
-        'index': !exists(json, 'index') ? undefined : json['index'],
+        'embedding': json['embedding'],
+        'index': json['index'],
         'truncated': !exists(json, 'truncated') ? undefined : json['truncated'],
     };
 }
 
-export function EmbeddingsResponseDataInnerToJSON(value?: EmbeddingsResponseDataInner | null): any {
+export function EmbeddingToJSON(value?: Embedding | null): any {
     if (value === undefined) {
         return undefined;
     }

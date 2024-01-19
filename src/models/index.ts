@@ -1,8 +1,8 @@
 /* tslint:disable */
 /* eslint-disable */
+export * from './Embedding';
 export * from './EmbeddingsRequest';
 export * from './EmbeddingsResponse';
-export * from './EmbeddingsResponseDataInner';
 export * from './ErrorResponse';
 export * from './ModelBaseResponse';
-export * from './ModelBaseResponseUsage';
+export * from './ModelUsage';

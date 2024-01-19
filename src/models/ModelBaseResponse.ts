@@ -13,12 +13,12 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import type { ModelBaseResponseUsage } from './ModelBaseResponseUsage';
+import type { ModelUsage } from './ModelUsage';
 import {
-    ModelBaseResponseUsageFromJSON,
-    ModelBaseResponseUsageFromJSONTyped,
-    ModelBaseResponseUsageToJSON,
-} from './ModelBaseResponseUsage';
+    ModelUsageFromJSON,
+    ModelUsageFromJSONTyped,
+    ModelUsageToJSON,
+} from './ModelUsage';
 
 /**
  * 
@@ -34,10 +34,10 @@ export interface ModelBaseResponse {
     model: string;
     /**
      * 
-     * @type {ModelBaseResponseUsage}
+     * @type {ModelUsage}
      * @memberof ModelBaseResponse
      */
-    usage: ModelBaseResponseUsage;
+    usage: ModelUsage;
 }
 
 /**
@@ -62,7 +62,7 @@ export function ModelBaseResponseFromJSONTyped(json: any, ignoreDiscriminator: b
     return {
         
         'model': json['model'],
-        'usage': ModelBaseResponseUsageFromJSON(json['usage']),
+        'usage': ModelUsageFromJSON(json['usage']),
     };
 }
 
@@ -76,7 +76,7 @@ export function ModelBaseResponseToJSON(value?: ModelBaseResponse | null): any {
     return {
         
         'model': value.model,
-        'usage': ModelBaseResponseUsageToJSON(value.usage),
+        'usage': ModelUsageToJSON(value.usage),
     };
 }
 

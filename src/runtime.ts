@@ -260,21 +260,21 @@ function isFormData(value: any): value is FormData {
 export class ResponseError extends Error {
     override name: "ResponseError" = "ResponseError";
     constructor(public response: Response, msg?: string) {
-        super(`${msg || ''}. ${response.status} ${response.statusText}.`.trim());
+        super(msg);
     }
 }
 
 export class FetchError extends Error {
     override name: "FetchError" = "FetchError";
     constructor(public cause: Error, msg?: string) {
-        super(`${msg || ''}. ${cause.message}`.trim());
+        super(msg);
     }
 }
 
 export class RequiredError extends Error {
     override name: "RequiredError" = "RequiredError";
     constructor(public field: string, msg?: string) {
-        super(`Required field missing: ${field}. ${msg || ''}`.trim());
+        super(msg);
     }
 }
 

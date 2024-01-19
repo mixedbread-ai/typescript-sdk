@@ -13,18 +13,18 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import type { EmbeddingsResponseDataInner } from './EmbeddingsResponseDataInner';
+import type { Embedding } from './Embedding';
 import {
-    EmbeddingsResponseDataInnerFromJSON,
-    EmbeddingsResponseDataInnerFromJSONTyped,
-    EmbeddingsResponseDataInnerToJSON,
-} from './EmbeddingsResponseDataInner';
-import type { ModelBaseResponseUsage } from './ModelBaseResponseUsage';
+    EmbeddingFromJSON,
+    EmbeddingFromJSONTyped,
+    EmbeddingToJSON,
+} from './Embedding';
+import type { ModelUsage } from './ModelUsage';
 import {
-    ModelBaseResponseUsageFromJSON,
-    ModelBaseResponseUsageFromJSONTyped,
-    ModelBaseResponseUsageToJSON,
-} from './ModelBaseResponseUsage';
+    ModelUsageFromJSON,
+    ModelUsageFromJSONTyped,
+    ModelUsageToJSON,
+} from './ModelUsage';
 
 /**
  * 
@@ -40,10 +40,10 @@ export interface EmbeddingsResponse {
     normalized: boolean;
     /**
      * 
-     * @type {Array<EmbeddingsResponseDataInner>}
+     * @type {Array<Embedding>}
      * @memberof EmbeddingsResponse
      */
-    data: Array<EmbeddingsResponseDataInner>;
+    data: Array<Embedding>;
     /**
      * The embeddings model used.
      * @type {string}
@@ -52,10 +52,10 @@ export interface EmbeddingsResponse {
     model: string;
     /**
      * 
-     * @type {ModelBaseResponseUsage}
+     * @type {ModelUsage}
      * @memberof EmbeddingsResponse
      */
-    usage: ModelBaseResponseUsage;
+    usage: ModelUsage;
 }
 
 /**
@@ -82,9 +82,9 @@ export function EmbeddingsResponseFromJSONTyped(json: any, ignoreDiscriminator: 
     return {
         
         'normalized': json['normalized'],
-        'data': ((json['data'] as Array<any>).map(EmbeddingsResponseDataInnerFromJSON)),
+        'data': ((json['data'] as Array<any>).map(EmbeddingFromJSON)),
         'model': json['model'],
-        'usage': ModelBaseResponseUsageFromJSON(json['usage']),
+        'usage': ModelUsageFromJSON(json['usage']),
     };
 }
 
@@ -98,9 +98,9 @@ export function EmbeddingsResponseToJSON(value?: EmbeddingsResponse | null): any
     return {
         
         'normalized': value.normalized,
-        'data': ((value.data as Array<any>).map(EmbeddingsResponseDataInnerToJSON)),
+        'data': ((value.data as Array<any>).map(EmbeddingToJSON)),
         'model': value.model,
-        'usage': ModelBaseResponseUsageToJSON(value.usage),
+        'usage': ModelUsageToJSON(value.usage),
     };
 }
 

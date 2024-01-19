@@ -16,33 +16,33 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface ModelBaseResponseUsage
+ * @interface ModelUsage
  */
-export interface ModelBaseResponseUsage {
+export interface ModelUsage {
     /**
      * The number of prompt tokens used.
      * @type {number}
-     * @memberof ModelBaseResponseUsage
+     * @memberof ModelUsage
      */
     promptTokens: number;
     /**
      * The total number of tokens used.
      * @type {number}
-     * @memberof ModelBaseResponseUsage
+     * @memberof ModelUsage
      */
     totalTokens: number;
     /**
      * The number of completion tokens used.
      * @type {number}
-     * @memberof ModelBaseResponseUsage
+     * @memberof ModelUsage
      */
     completionTokens?: number;
 }
 
 /**
- * Check if a given object implements the ModelBaseResponseUsage interface.
+ * Check if a given object implements the ModelUsage interface.
  */
-export function instanceOfModelBaseResponseUsage(value: object): boolean {
+export function instanceOfModelUsage(value: object): boolean {
     let isInstance = true;
     isInstance = isInstance && "promptTokens" in value;
     isInstance = isInstance && "totalTokens" in value;
@@ -50,11 +50,11 @@ export function instanceOfModelBaseResponseUsage(value: object): boolean {
     return isInstance;
 }
 
-export function ModelBaseResponseUsageFromJSON(json: any): ModelBaseResponseUsage {
-    return ModelBaseResponseUsageFromJSONTyped(json, false);
+export function ModelUsageFromJSON(json: any): ModelUsage {
+    return ModelUsageFromJSONTyped(json, false);
 }
 
-export function ModelBaseResponseUsageFromJSONTyped(json: any, ignoreDiscriminator: boolean): ModelBaseResponseUsage {
+export function ModelUsageFromJSONTyped(json: any, ignoreDiscriminator: boolean): ModelUsage {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -66,7 +66,7 @@ export function ModelBaseResponseUsageFromJSONTyped(json: any, ignoreDiscriminat
     };
 }
 
-export function ModelBaseResponseUsageToJSON(value?: ModelBaseResponseUsage | null): any {
+export function ModelUsageToJSON(value?: ModelUsage | null): any {
     if (value === undefined) {
         return undefined;
     }
