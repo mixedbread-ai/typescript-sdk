@@ -22,6 +22,10 @@
 # Then explicitly reverse the ignore rule for a single file:
 #!docs/README.md
 
-src/runtime.ts
 README.md
 package.json
+src/index.ts
+src/mixedbread-ai.ts
+src/mixedbread-ai-types.ts
+src/runtime.d.ts
+tsconfig.json

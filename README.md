@@ -20,13 +20,13 @@ npm install @mixedbread-ai/sdk --save
 Here's an example of using the mixedbread ai SDK to create embeddings:
 
 ```typescript
-import { MixedbreadAiApi, Configuration, EmbeddingsRequest } from "@mixedbread-ai/sdk";
+import { MixedbreadAi } from "@mixedbread-ai/sdk";
 
 process.env.MIXEDBREADAI_API_KEY="{YOUR_API_KEY}"
 
-const client = new MixedbreadAiApi();
+const mxbai = new MixedbreadAi();
 const embeddings = await client.embeddings({
-    texts: ["Hello world!"],
+    input: "Hello world!",
     model: "e5-large-v2"
 })
 
@@ -34,3 +34,54 @@ console.log(embeddings)
 ```
 
 Replace `"{YOUR_API_KEY}"` with your actual API key. If you don't hav e an API key, you can get one for free by signing up for an account at [mixedbread.ai](https://mixedbread.ai/).
+
+## Configuration
+
+The mixedbread ai SDK can be configured by passing an object to the constructor. Here is a full example:
+    
+```typescript
+import { MixedbreadAi, ResponseError } from "@mixedbread-ai/sdk";
+
+const mxbai = new MixedbreadAi({
+    apiKey: "{YOUR_API_KEY}",
+    baseUrl: "https://api.mixedbread.ai",
+    headers: {
+        "X_CUSTOM_HEADER": "custom header value"
+    },
+    middleware: [
+        {
+            // Pre request
+            pre: async (context) => {
+                console.log("pre", context);
+            },
+            // Post request
+            post: async (context) => {
+                console.log("post", context);
+            },
+            // onError is triggered, when actually an error occurs. Response errors are not handled here.
+            onError(context) {
+                console.log("onError", context.init);
+                return Promise.resolve();
+            }
+        }
+    ],
+    // custom fetch implementation
+    // fetch: ...
+    // custom query string implementation
+    // queryString: ...
+});
+
+const result = await mxbai.embeddings({
+    input: ["Hello world!"],
+    model: "e5-large-v2",
+}, {
+    // custom request overrides
+    // method: "POST" etc.
+}).catch((err: ResponseError) => {
+    if (err.name === "ResponseError") {
+        console.log(err.message)
+    }
+});
+
+console.log(result)
+```

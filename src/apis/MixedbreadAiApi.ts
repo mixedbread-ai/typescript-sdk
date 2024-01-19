@@ -15,15 +15,15 @@
 
 import * as runtime from '../runtime';
 import type {
-  Embeddings200Response,
   EmbeddingsRequest,
+  EmbeddingsResponse,
   ErrorResponse,
 } from '../models/index';
 import {
-    Embeddings200ResponseFromJSON,
-    Embeddings200ResponseToJSON,
     EmbeddingsRequestFromJSON,
     EmbeddingsRequestToJSON,
+    EmbeddingsResponseFromJSON,
+    EmbeddingsResponseToJSON,
     ErrorResponseFromJSON,
     ErrorResponseToJSON,
 } from '../models/index';
@@ -33,15 +33,40 @@ export interface EmbeddingsOperationRequest {
 }
 
 /**
+ * MixedbreadAiApi - interface
  * 
+ * @export
+ * @interface MixedbreadAiApiInterface
  */
-export class MixedbreadAiApi extends runtime.BaseAPI {
+export interface MixedbreadAiApiInterface {
+    /**
+     * This endpoint allows you to post text data and receive embeddings in response. The embeddings are generated using the model specified in the request body.
+     * @summary Create embeddings
+     * @param {EmbeddingsRequest} embeddingsRequest 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MixedbreadAiApiInterface
+     */
+    embeddingsRaw(requestParameters: EmbeddingsOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EmbeddingsResponse>>;
 
     /**
      * This endpoint allows you to post text data and receive embeddings in response. The embeddings are generated using the model specified in the request body.
      * Create embeddings
      */
-    async embeddingsRaw(requestParameters: EmbeddingsOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Embeddings200Response>> {
+    embeddings(embeddingsRequest: EmbeddingsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EmbeddingsResponse>;
+
+}
+
+/**
+ * 
+ */
+export class MixedbreadAiApi extends runtime.BaseAPI implements MixedbreadAiApiInterface {
+
+    /**
+     * This endpoint allows you to post text data and receive embeddings in response. The embeddings are generated using the model specified in the request body.
+     * Create embeddings
+     */
+    async embeddingsRaw(requestParameters: EmbeddingsOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EmbeddingsResponse>> {
         if (requestParameters.embeddingsRequest === null || requestParameters.embeddingsRequest === undefined) {
             throw new runtime.RequiredError('embeddingsRequest','Required parameter requestParameters.embeddingsRequest was null or undefined when calling embeddings.');
         }
@@ -64,14 +89,14 @@ export class MixedbreadAiApi extends runtime.BaseAPI {
             body: EmbeddingsRequestToJSON(requestParameters.embeddingsRequest),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => Embeddings200ResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => EmbeddingsResponseFromJSON(jsonValue));
     }
 
     /**
      * This endpoint allows you to post text data and receive embeddings in response. The embeddings are generated using the model specified in the request body.
      * Create embeddings
      */
-    async embeddings(embeddingsRequest: EmbeddingsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Embeddings200Response> {
+    async embeddings(embeddingsRequest: EmbeddingsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EmbeddingsResponse> {
         const response = await this.embeddingsRaw({ embeddingsRequest: embeddingsRequest }, initOverrides);
         return await response.value();
     }

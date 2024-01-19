@@ -16,43 +16,43 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface Embeddings200ResponseDataInner
+ * @interface EmbeddingsResponseDataInner
  */
-export interface Embeddings200ResponseDataInner {
+export interface EmbeddingsResponseDataInner {
     /**
      * The generated embeddings.
      * @type {Array<number>}
-     * @memberof Embeddings200ResponseDataInner
+     * @memberof EmbeddingsResponseDataInner
      */
     embedding?: Array<number>;
     /**
      * Index of the request text the embedding corresponds to.
      * @type {number}
-     * @memberof Embeddings200ResponseDataInner
+     * @memberof EmbeddingsResponseDataInner
      */
     index?: number;
     /**
      * Indicates if the text was truncated for the model.
      * @type {boolean}
-     * @memberof Embeddings200ResponseDataInner
+     * @memberof EmbeddingsResponseDataInner
      */
-    wasTruncated?: boolean;
+    truncated?: boolean;
 }
 
 /**
- * Check if a given object implements the Embeddings200ResponseDataInner interface.
+ * Check if a given object implements the EmbeddingsResponseDataInner interface.
  */
-export function instanceOfEmbeddings200ResponseDataInner(value: object): boolean {
+export function instanceOfEmbeddingsResponseDataInner(value: object): boolean {
     let isInstance = true;
 
     return isInstance;
 }
 
-export function Embeddings200ResponseDataInnerFromJSON(json: any): Embeddings200ResponseDataInner {
-    return Embeddings200ResponseDataInnerFromJSONTyped(json, false);
+export function EmbeddingsResponseDataInnerFromJSON(json: any): EmbeddingsResponseDataInner {
+    return EmbeddingsResponseDataInnerFromJSONTyped(json, false);
 }
 
-export function Embeddings200ResponseDataInnerFromJSONTyped(json: any, ignoreDiscriminator: boolean): Embeddings200ResponseDataInner {
+export function EmbeddingsResponseDataInnerFromJSONTyped(json: any, ignoreDiscriminator: boolean): EmbeddingsResponseDataInner {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -60,11 +60,11 @@ export function Embeddings200ResponseDataInnerFromJSONTyped(json: any, ignoreDis
         
         'embedding': !exists(json, 'embedding') ? undefined : json['embedding'],
         'index': !exists(json, 'index') ? undefined : json['index'],
-        'wasTruncated': !exists(json, 'was_truncated') ? undefined : json['was_truncated'],
+        'truncated': !exists(json, 'truncated') ? undefined : json['truncated'],
     };
 }
 
-export function Embeddings200ResponseDataInnerToJSON(value?: Embeddings200ResponseDataInner | null): any {
+export function EmbeddingsResponseDataInnerToJSON(value?: EmbeddingsResponseDataInner | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -75,7 +75,7 @@ export function Embeddings200ResponseDataInnerToJSON(value?: Embeddings200Respon
         
         'embedding': value.embedding,
         'index': value.index,
-        'was_truncated': value.wasTruncated,
+        'truncated': value.truncated,
     };
 }
 

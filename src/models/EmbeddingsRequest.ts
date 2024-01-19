@@ -13,13 +13,6 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import type { EmbeddingsRequestInput } from './EmbeddingsRequestInput';
-import {
-    EmbeddingsRequestInputFromJSON,
-    EmbeddingsRequestInputFromJSONTyped,
-    EmbeddingsRequestInputToJSON,
-} from './EmbeddingsRequestInput';
-
 /**
  * 
  * @export
@@ -27,17 +20,17 @@ import {
  */
 export interface EmbeddingsRequest {
     /**
-     * 
-     * @type {EmbeddingsRequestInput}
-     * @memberof EmbeddingsRequest
-     */
-    input?: EmbeddingsRequestInput;
-    /**
      * Specifies the model to be used for generating embeddings.
      * @type {string}
      * @memberof EmbeddingsRequest
      */
-    model?: string;
+    model: string;
+    /**
+     * A list of text strings for which the embeddings should be generated.
+     * @type {Array<string>}
+     * @memberof EmbeddingsRequest
+     */
+    input: Array<string>;
     /**
      * Required only for instruction based models. Specifies the instruction for generating embeddings.
      * @type {string}
@@ -57,6 +50,8 @@ export interface EmbeddingsRequest {
  */
 export function instanceOfEmbeddingsRequest(value: object): boolean {
     let isInstance = true;
+    isInstance = isInstance && "model" in value;
+    isInstance = isInstance && "input" in value;
 
     return isInstance;
 }
@@ -71,8 +66,8 @@ export function EmbeddingsRequestFromJSONTyped(json: any, ignoreDiscriminator: b
     }
     return {
         
-        'input': !exists(json, 'input') ? undefined : EmbeddingsRequestInputFromJSON(json['input']),
-        'model': !exists(json, 'model') ? undefined : json['model'],
+        'model': json['model'],
+        'input': json['input'],
         'instruction': !exists(json, 'instruction') ? undefined : json['instruction'],
         'normalized': !exists(json, 'normalized') ? undefined : json['normalized'],
     };
@@ -87,8 +82,8 @@ export function EmbeddingsRequestToJSON(value?: EmbeddingsRequest | null): any {
     }
     return {
         
-        'input': EmbeddingsRequestInputToJSON(value.input),
         'model': value.model,
+        'input': value.input,
         'instruction': value.instruction,
         'normalized': value.normalized,
     };

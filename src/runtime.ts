@@ -20,8 +20,12 @@ export interface ConfigurationParameters {
     fetchApi?: FetchAPI; // override for fetch implementation
     middleware?: Middleware[]; // middleware to apply before/after fetch requests
     queryParamsStringify?: (params: HTTPQuery) => string; // stringify function for query strings
+    username?: string; // parameter for basic security
+    password?: string; // parameter for basic security
     apiKey?: string | ((name: string) => string); // parameter for apiKey security
+    accessToken?: string | Promise<string> | ((name?: string, scopes?: string[]) => string | Promise<string>); // parameter for oauth2 security
     headers?: HTTPHeaders; //header params we want to use on every request
+    credentials?: RequestCredentials; //value for the credentials param we want to use on each request
 }
 
 export class Configuration {
@@ -48,35 +52,26 @@ export class Configuration {
     }
 
     get username(): string | undefined {
-        return undefined;
+        return this.configuration.username;
     }
 
     get password(): string | undefined {
-        return undefined;
+        return this.configuration.password;
     }
 
     get apiKey(): ((name: string) => string) | undefined {
-        let apiKey = this.configuration.apiKey;
-
+        const apiKey = this.configuration.apiKey;
         if (apiKey) {
-            if (typeof apiKey === 'function') {
-                // @ts-ignore
-                return (name: string) => 'Bearer ' + apiKey(name);
-            } else {
-                return () => 'Bearer ' + apiKey;
-            }
-        } else {
-            // @ts-ignore
-            apiKey = process.env.MIXEDBREADAI_API_KEY;
-            if (apiKey) {
-                return () => 'Bearer ' + apiKey;
-            }
+            return typeof apiKey === 'function' ? apiKey : () => apiKey;
         }
-
         return undefined;
     }
 
     get accessToken(): ((name?: string, scopes?: string[]) => string | Promise<string>) | undefined {
+        const accessToken = this.configuration.accessToken;
+        if (accessToken) {
+            return typeof accessToken === 'function' ? accessToken : async () => accessToken;
+        }
         return undefined;
     }
 
@@ -85,7 +80,7 @@ export class Configuration {
     }
 
     get credentials(): RequestCredentials | undefined {
-        return undefined;
+        return this.configuration.credentials;
     }
 }
 
@@ -265,21 +260,21 @@ function isFormData(value: any): value is FormData {
 export class ResponseError extends Error {
     override name: "ResponseError" = "ResponseError";
     constructor(public response: Response, msg?: string) {
-        super(msg);
+        super(`${msg || ''}. ${response.status} ${response.statusText}.`.trim());
     }
 }
 
 export class FetchError extends Error {
     override name: "FetchError" = "FetchError";
     constructor(public cause: Error, msg?: string) {
-        super(msg);
+        super(`${msg || ''}. ${cause.message}`.trim());
     }
 }
 
 export class RequiredError extends Error {
     override name: "RequiredError" = "RequiredError";
     constructor(public field: string, msg?: string) {
-        super(msg);
+        super(`Required field missing: ${field}. ${msg || ''}`.trim());
     }
 }
 
