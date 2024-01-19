@@ -44,7 +44,7 @@ import { MixedbreadAi, ResponseError } from "@mixedbread-ai/sdk";
 
 const mxbai = new MixedbreadAi({
     apiKey: "{YOUR_API_KEY}",
-    baseUrl: "https://api.mixedbread.ai",
+    basePath: "https://api.mixedbread.ai",
     headers: {
         "X_CUSTOM_HEADER": "custom header value"
     },
