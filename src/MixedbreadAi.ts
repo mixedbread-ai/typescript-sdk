@@ -8,14 +8,14 @@ import packageInfo from '../package.json';
 
 interface MixedbreadAiConfig {
     apiKey?: OpenAPIConfig['TOKEN'];
-    basePath?: OpenAPIConfig['BASE'];
+    baseUrl?: OpenAPIConfig['BASE'];
     headers?: OpenAPIConfig['HEADERS'];
 }
 
 export class MixedbreadAi {
     constructor(protected configuration: MixedbreadAiConfig = {
         apiKey: process.env.MIXEDBREAD_API_KEY ?? process.env.MIXEDBREADAI_API_KEY,
-        basePath: OpenAPI.BASE,
+        baseUrl: OpenAPI.BASE,
     }) {
         if (!configuration.apiKey) {
             throw new Error('Missing required apiKey. Please set the MIXEDBREAD_API_KEY environment variable or pass it to the constructor.');
@@ -26,7 +26,7 @@ export class MixedbreadAi {
         return {
             TOKEN: this.configuration.apiKey,
             VERSION: packageInfo.version,
-            BASE: this.configuration.basePath ?? OpenAPI.BASE,
+            BASE: this.configuration.baseUrl ?? OpenAPI.BASE,
             CREDENTIALS: 'include',
             WITH_CREDENTIALS: true,
             HEADERS: {
