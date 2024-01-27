@@ -20,6 +20,9 @@ export class MixedbreadAi {
         if (!configuration.apiKey) {
             throw new Error('Missing required apiKey. Please set the MIXEDBREAD_API_KEY environment variable or pass it to the constructor.');
         }
+        if (!configuration.baseUrl) {
+            throw new Error('Missing required baseUrl. Please set the MIXEDBREAD_BASE_URL environment variable or pass it to the constructor.');
+        }
     }
 
     private getConfig(): OpenAPIConfig {

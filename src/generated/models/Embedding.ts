@@ -4,6 +4,10 @@
 /* eslint-disable */
 export type Embedding = {
     /**
+     * The object type.
+     */
+    object: string;
+    /**
      * The generated embeddings.
      */
     embedding: Array<number>;
