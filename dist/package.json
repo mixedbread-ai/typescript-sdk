@@ -1,0 +1,25 @@
+{
+    "name": "@mixedbread-ai/sdk",
+    "version": "1.2.3",
+    "license": "Apache-2.0",
+    "description": "SDK for mixedbread.ai",
+    "author": "mixedrbread.ai",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/mixedbread-ai/typescript-sdk.git"
+    },
+    "main": "./dist/src/index.js",
+    "typings": "./dist/src/index.d.ts",
+    "module": "./dist/esm/src/index.js",
+    "sideEffects": false,
+    "scripts": {
+        "build": "tsc && tsc -p tsconfig.esm.json",
+        "prepare": "npm run build",
+        "generate": "openapi-typescript-codegen --input ../../apps/backend/openapi.yaml --output ./src/generated"
+    },
+    "devDependencies": {
+        "@types/node": "^20.11.5",
+        "typescript": "^4.0",
+        "openapi-typescript-codegen": "^0.27.0"
+    }
+}
