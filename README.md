@@ -1,59 +1,92 @@
 # mixedbread ai TypeScript SDK
 
-## Introduction to mixedbread ai
-mixedbread ai is a cutting-edge research and development company specializing in Natural Language Processing (NLP). At our core, we focus on advancing the field of NLP through innovative research, offering powerful tools for embeddings, retrieval, and other NLP functionalities. Our mission is to make NLP accessible to everyone on every device. To learn more about mixedbread ai, visit our [website](https://mixedbread.ai/).
+## Table of Contents
+- [Installation](#installation)
+- [Quick Start](#quick-start)
+- [Usage](#usage)
+  - [Embeddings](#embeddings)
+  - [Reranking](#reranking)
+- [Error Handling](#error-handling)
+- [API Documentation](#api-documentation)
 
-## Installation and Setup
+## Installation
 
-To start using the mixedbread ai SDK in your project, install it via npm (Node Package Manager). Ensure Node.js is installed in your environment beforehand.
-
-### Installation
-
-Run the following command in your project directory to install the SDK:
+To start using the mixedbread ai SDK in your project, install it via npm (Node Package Manager). Ensure Node.js is installed in your environment beforehand. Run the following command in your project directory to install the SDK:
 
 ```bash
 npm install @mixedbread-ai/sdk --save
 ```
 
-## Usage Example
-
-Here's an example of using the mixedbread ai SDK to create embeddings:
-
+## Quick Start
+Here's a minimal example to get started with the mixedbread ai SDK:
 ```typescript
-import { MixedbreadAi } from "@mixedbread-ai/sdk";
+import { mixedbreadAiApi } from "@mixedbread-ai/sdk";
 
-process.env.MIXEDBREAD_API_KEY="{YOUR_API_KEY}"
-
-const mxbai = new MixedbreadAi();
-const embeddings = await mxbai.embeddings({
-    input: "Hello world!",
-    model: "e5-large-v2"
-})
-
-console.log(embeddings)
-```
-
-Replace `"{YOUR_API_KEY}"` with your actual API key. If you don't hav e an API key, you can get one for free by signing up for an account at [mixedbread.ai](https://mixedbread.ai/).
-
-## Configuration
-
-The mixedbread ai SDK can be configured by passing an object to the constructor. Here is a full example:
-    
-```typescript
-import { MixedbreadAi } from "@mixedbread-ai/sdk";
-
-const mxbai = new MixedbreadAi({
-    apiKey: "{YOUR_API_KEY}",
-    baseUrl: "https://api.mixedbread.ai",
-    headers: {
-        "X_CUSTOM_HEADER": "custom header value"
-    },
+const mxbai = new mixedbreadAiApi({
+    apiKey: "{YOUR_API_KEY}"
 });
 
 const embeddings = await mxbai.embeddings({
-    input: ["Hello world!"],
-    model: "e5-large-v2",
-})
+    input: "Hello world!",
+    model: "mixedbread-ai/mxbai-embed-large-v1"
+});
 
-console.log(embeddings)
+console.log(embeddings);
 ```
+
+## Usage
+
+### Embeddings
+Here's an example of using the mixedbread ai SDK to create embeddings:
+```typescript
+import { mixedbreadAiApi } from "@mixedbread-ai/sdk";
+
+const mxbai = new mixedbreadAiApi({
+    apiKey: "{YOUR_API_KEY}"
+});
+
+const embeddings = await mxbai.embeddings({
+    model: "mixedbread-ai/mxbai-embed-large-v1",
+    input: ["I like to eat apples.", "I like to eat bananas."]
+});
+
+console.log(embeddings);
+```
+
+### Reranking
+Here's an example of using the mixedbread ai SDK to rerank documents:
+```typescript
+import { mixedbreadAiApi } from "@mixedbread-ai/sdk";
+
+const mxbai = new mixedbreadAiApi({
+    apiKey: "{YOUR_API_KEY}"
+});
+
+const model = "mixedbread-ai/mxbai-rerank-large-v1";
+const query = "Who wrote 'To Kill a Mockingbird'?";
+
+const documents = [
+    "'To Kill a Mockingbird' is a novel by Harper Lee published in 1960. It was immediately successful, winning the Pulitzer Prize, and has become a classic of modern American literature.",
+    "The novel 'Moby-Dick' was written by Herman Melville and first published in 1851. It is considered a masterpiece of American literature and deals with complex themes of obsession, revenge, and the conflict between good and evil.",
+    "Harper Lee, an American novelist widely known for her novel 'To Kill a Mockingbird', was born in 1926 in Monroeville, Alabama. She received the Pulitzer Prize for Fiction in 1961.",
+    "Jane Austen was an English novelist known primarily for her six major novels, which interpret, critique and comment upon the British landed gentry at the end of the 18th century.",
+    "The 'Harry Potter' series, which consists of seven fantasy novels written by British author J.K. Rowling, is among the most popular and critically acclaimed books of the modern era.",
+    "'The Great Gatsby', a novel written by American author F. Scott Fitzgerald, was published in 1925. The story is set in the Jazz Age and follows the life of millionaire Jay Gatsby and his pursuit of Daisy Buchanan."
+];
+
+const rerankedDocs = await mxbai.reranking({
+    model,
+    query,
+    input: documents
+});
+
+console.log(rerankedDocs);
+```
+
+Replace `"{YOUR_API_KEY}"` with your actual API key. If you don't have an API key, you can get one for free by signing up for an account at [mixedbread.ai](https://mixedbread.ai/).
+
+## Error Handling
+The SDK will throw an error if there is an issue with the API request, such as an invalid API key or a network error. Make sure to handle these errors in your code using try/catch blocks or `.catch()` on promises.
+
+## API Documentation
+For more information on the available methods and options in the mixedbread ai SDK, please refer to our [API documentation](https://mixedbread.ai/api-reference).
