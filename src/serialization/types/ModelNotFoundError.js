@@ -39,7 +39,7 @@ exports.ModelNotFoundError = void 0;
 const core = __importStar(require("../../core"));
 exports.ModelNotFoundError = core.serialization.object({
     type: core.serialization.stringLiteral("model_not_found_error").optional(),
-    url: core.serialization.string().optional(),
-    message: core.serialization.string().optional(),
     details: core.serialization.lazy(() => __awaiter(void 0, void 0, void 0, function* () { return (yield Promise.resolve().then(() => __importStar(require("..")))).MxbaiWebErrorDetails; })).optional(),
+    message: core.serialization.string().optional(),
+    url: core.serialization.string().optional(),
 });

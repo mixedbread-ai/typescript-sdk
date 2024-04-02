@@ -39,7 +39,7 @@ exports.BadRequestErrorBody = void 0;
 const core = __importStar(require("../../core"));
 exports.BadRequestErrorBody = core.serialization.object({
     type: core.serialization.stringLiteral("bad_request_error").optional(),
-    url: core.serialization.string().optional(),
-    message: core.serialization.string().optional(),
     details: core.serialization.lazy(() => __awaiter(void 0, void 0, void 0, function* () { return (yield Promise.resolve().then(() => __importStar(require("..")))).MxbaiWebErrorDetails; })).optional(),
+    message: core.serialization.string().optional(),
+    url: core.serialization.string().optional(),
 });

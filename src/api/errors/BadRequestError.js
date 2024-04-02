@@ -28,7 +28,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BadRequestError = void 0;
 const errors = __importStar(require("../../errors"));
-class BadRequestError extends errors.MixedbreadAiApiError {
+class BadRequestError extends errors.MixedbreadAIError {
     constructor(body) {
         super({
             message: "BadRequestError",

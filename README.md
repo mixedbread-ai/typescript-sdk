@@ -20,9 +20,9 @@ npm install @mixedbread-ai/sdk --save
 ## Quick Start
 Here's a minimal example to get started with the mixedbread ai SDK:
 ```typescript
-import { mixedbreadAiApi } from "@mixedbread-ai/sdk";
+import { MixedbreadAIClient } from "@mixedbread-ai/sdk";
 
-const mxbai = new mixedbreadAiApi({
+const mxbai = new MixedbreadAIClient({
     apiKey: "{YOUR_API_KEY}"
 });
 
@@ -37,11 +37,11 @@ console.log(embeddings);
 ## Usage
 
 ### Embeddings
-Here's an example of using the mixedbread ai SDK to create embeddings:
+Here's an example of using the mixedbread ai SDK to create basic embeddings:
 ```typescript
-import { mixedbreadAiApi } from "@mixedbread-ai/sdk";
+import { MixedbreadAIClient } from "@mixedbread-ai/sdk";
 
-const mxbai = new mixedbreadAiApi({
+const mxbai = new MixedbreadAIClient({
     apiKey: "{YOUR_API_KEY}"
 });
 
@@ -53,12 +53,30 @@ const embeddings = await mxbai.embeddings({
 console.log(embeddings);
 ```
 
+By providing a prompt, you can guide the model to produce embeddings that are optimized for your specific use-case or downstream task.
+
+```typescript
+import { MixedbreadAIClient } from "@mixedbread-ai/sdk";
+
+const mxbai = new MixedbreadAIClient({
+    apiKey: "{YOUR_API_KEY}"
+});
+
+const embeddings = await mxbai.embeddings({
+    model: "mixedbread-ai/mxbai-embed-large-v1",
+    input: ["I like to eat apples.", "I like to eat bananas."],
+    prompt: "Represent this sentence for searching relevant passages"
+});
+
+console.log(embeddings);
+```
+
 ### Reranking
 Here's an example of using the mixedbread ai SDK to rerank documents:
 ```typescript
-import { mixedbreadAiApi } from "@mixedbread-ai/sdk";
+import { MixedbreadAIClient } from "@mixedbread-ai/sdk";
 
-const mxbai = new mixedbreadAiApi({
+const mxbai = new MixedbreadAIClient({
     apiKey: "{YOUR_API_KEY}"
 });
 

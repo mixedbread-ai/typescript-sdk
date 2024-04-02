@@ -38,13 +38,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.EmbeddingsRequest = void 0;
 const core = __importStar(require("../../../core"));
 exports.EmbeddingsRequest = core.serialization.object({
-    model: core.serialization.string(),
-    input: core.serialization.lazy(() => __awaiter(void 0, void 0, void 0, function* () { return (yield Promise.resolve().then(() => __importStar(require("../..")))).Input; })),
-    normalized: core.serialization.boolean().optional(),
-    encodingFormat: core.serialization.property("encoding_format", core.serialization.lazy(() => __awaiter(void 0, void 0, void 0, function* () { return (yield Promise.resolve().then(() => __importStar(require("../..")))).EmbeddingsRequestEncodingFormat; })).optional()),
-    truncationStrategy: core.serialization.property("truncation_strategy", core.serialization.lazy(() => __awaiter(void 0, void 0, void 0, function* () { return (yield Promise.resolve().then(() => __importStar(require("../..")))).TruncationStrategy; })).optional()),
     dimensions: core.serialization.number().optional(),
+    encodingFormat: core.serialization.property("encoding_format", core.serialization.lazy(() => __awaiter(void 0, void 0, void 0, function* () { return (yield Promise.resolve().then(() => __importStar(require("../..")))).EmbeddingsRequestEncodingFormat; })).optional()),
+    input: core.serialization.lazy(() => __awaiter(void 0, void 0, void 0, function* () { return (yield Promise.resolve().then(() => __importStar(require("../..")))).Input; })),
     instruction: core.serialization.string().optional(),
-    texts: core.serialization.list(core.serialization.string()).optional(),
+    model: core.serialization.string(),
+    normalized: core.serialization.boolean().optional(),
     prompt: core.serialization.string().optional(),
+    texts: core.serialization.list(core.serialization.string()).optional(),
+    truncationStrategy: core.serialization.property("truncation_strategy", core.serialization.lazy(() => __awaiter(void 0, void 0, void 0, function* () { return (yield Promise.resolve().then(() => __importStar(require("../..")))).TruncationStrategy; })).optional()),
 });

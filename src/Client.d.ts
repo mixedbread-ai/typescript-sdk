@@ -3,10 +3,10 @@
  */
 import * as environments from "./environments";
 import * as core from "./core";
-import * as MixedbreadAiApi from "./api";
-export declare namespace MixedbreadAiApiClient {
+import * as MixedbreadAI from "./api";
+export declare namespace MixedbreadAIClient {
     interface Options {
-        environment?: core.Supplier<environments.MixedbreadAiApiEnvironment | string>;
+        environment?: core.Supplier<environments.MixedbreadAIEnvironment | string>;
         apiKey: core.Supplier<string>;
     }
     interface RequestOptions {
@@ -14,47 +14,47 @@ export declare namespace MixedbreadAiApiClient {
         maxRetries?: number;
     }
 }
-export declare class MixedbreadAiApiClient {
-    protected readonly _options: MixedbreadAiApiClient.Options;
-    constructor(_options: MixedbreadAiApiClient.Options);
+export declare class MixedbreadAIClient {
+    protected readonly _options: MixedbreadAIClient.Options;
+    constructor(_options: MixedbreadAIClient.Options);
     /**
      * Create embeddings for text or images using the specified model, encoding format, and normalization.
-     * @throws {@link MixedbreadAiApi.BadRequestError}
-     * @throws {@link MixedbreadAiApi.UnauthorizedError}
-     * @throws {@link MixedbreadAiApi.ForbiddenError}
-     * @throws {@link MixedbreadAiApi.NotFoundError}
-     * @throws {@link MixedbreadAiApi.UnprocessableEntityError}
-     * @throws {@link MixedbreadAiApi.TooManyRequestsError}
-     * @throws {@link MixedbreadAiApi.InternalServerError}
+     * @throws {@link MixedbreadAI.BadRequestError}
+     * @throws {@link MixedbreadAI.UnauthorizedError}
+     * @throws {@link MixedbreadAI.ForbiddenError}
+     * @throws {@link MixedbreadAI.NotFoundError}
+     * @throws {@link MixedbreadAI.UnprocessableEntityError}
+     * @throws {@link MixedbreadAI.TooManyRequestsError}
+     * @throws {@link MixedbreadAI.InternalServerError}
      *
      * @example
-     *     await mixedbreadAiApi.embeddings({
+     *     await mixedbreadAi.embeddings({
      *         model: "model"
      *     })
      */
-    embeddings(request: MixedbreadAiApi.EmbeddingsRequest, requestOptions?: MixedbreadAiApiClient.RequestOptions): Promise<MixedbreadAiApi.EmbeddingsResponse>;
+    embeddings(request: MixedbreadAI.EmbeddingsRequest, requestOptions?: MixedbreadAIClient.RequestOptions): Promise<MixedbreadAI.EmbeddingsResponse>;
     /**
-     * @throws {@link MixedbreadAiApi.BadRequestError}
-     * @throws {@link MixedbreadAiApi.UnauthorizedError}
-     * @throws {@link MixedbreadAiApi.ForbiddenError}
-     * @throws {@link MixedbreadAiApi.NotFoundError}
-     * @throws {@link MixedbreadAiApi.UnprocessableEntityError}
-     * @throws {@link MixedbreadAiApi.TooManyRequestsError}
-     * @throws {@link MixedbreadAiApi.InternalServerError}
+     * @throws {@link MixedbreadAI.BadRequestError}
+     * @throws {@link MixedbreadAI.UnauthorizedError}
+     * @throws {@link MixedbreadAI.ForbiddenError}
+     * @throws {@link MixedbreadAI.NotFoundError}
+     * @throws {@link MixedbreadAI.UnprocessableEntityError}
+     * @throws {@link MixedbreadAI.TooManyRequestsError}
+     * @throws {@link MixedbreadAI.InternalServerError}
      *
      * @example
-     *     await mixedbreadAiApi.reranking({
-     *         model: "model",
+     *     await mixedbreadAi.reranking({
      *         input: [{
      *                 text: "text"
      *             }],
+     *         model: "model",
      *         query: {
      *             text: "text"
      *         },
-     *         topK: 10,
-     *         returnInput: false
+     *         returnInput: false,
+     *         topK: 10
      *     })
      */
-    reranking(request: MixedbreadAiApi.RerankingRequest, requestOptions?: MixedbreadAiApiClient.RequestOptions): Promise<MixedbreadAiApi.RerankingResponse>;
+    reranking(request: MixedbreadAI.RerankingRequest, requestOptions?: MixedbreadAIClient.RequestOptions): Promise<MixedbreadAI.RerankingResponse>;
     protected _getAuthorizationHeader(): Promise<string>;
 }

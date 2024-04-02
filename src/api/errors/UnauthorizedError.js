@@ -28,7 +28,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UnauthorizedError = void 0;
 const errors = __importStar(require("../../errors"));
-class UnauthorizedError extends errors.MixedbreadAiApiError {
+class UnauthorizedError extends errors.MixedbreadAIError {
     constructor(body) {
         super({
             message: "UnauthorizedError",

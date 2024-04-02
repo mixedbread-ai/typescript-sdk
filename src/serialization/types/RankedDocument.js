@@ -39,7 +39,7 @@ exports.RankedDocument = void 0;
 const core = __importStar(require("../../core"));
 exports.RankedDocument = core.serialization.object({
     index: core.serialization.number(),
-    score: core.serialization.number(),
     input: core.serialization.unknown(),
     object: core.serialization.lazy(() => __awaiter(void 0, void 0, void 0, function* () { return (yield Promise.resolve().then(() => __importStar(require("..")))).ObjectType; })).optional(),
+    score: core.serialization.number(),
 });

@@ -39,5 +39,5 @@ exports.Data = void 0;
 const core = __importStar(require("../../core"));
 exports.Data = core.serialization.undiscriminatedUnion([
     core.serialization.list(core.serialization.lazyObject(() => __awaiter(void 0, void 0, void 0, function* () { return (yield Promise.resolve().then(() => __importStar(require("..")))).Embedding; }))),
-    core.serialization.list(core.serialization.lazyObject(() => __awaiter(void 0, void 0, void 0, function* () { return (yield Promise.resolve().then(() => __importStar(require("..")))).MultiEncodingsEmbedding; }))),
+    core.serialization.list(core.serialization.lazyObject(() => __awaiter(void 0, void 0, void 0, function* () { return (yield Promise.resolve().then(() => __importStar(require("..")))).MultipleEncodingsEmbedding; }))),
 ]);

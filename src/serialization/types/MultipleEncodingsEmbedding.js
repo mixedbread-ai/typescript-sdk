@@ -35,10 +35,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.MultiEncodingsEmbedding = void 0;
+exports.MultipleEncodingsEmbedding = void 0;
 const core = __importStar(require("../../core"));
-exports.MultiEncodingsEmbedding = core.serialization.object({
-    embedding: core.serialization.record(core.serialization.string(), core.serialization.lazy(() => __awaiter(void 0, void 0, void 0, function* () { return (yield Promise.resolve().then(() => __importStar(require("..")))).MultiEncodingsEmbeddingEmbeddingValue; }))),
+exports.MultipleEncodingsEmbedding = core.serialization.object({
+    embedding: core.serialization.lazyObject(() => __awaiter(void 0, void 0, void 0, function* () { return (yield Promise.resolve().then(() => __importStar(require("..")))).MultipleEncodingsEmbeddingItem; })),
     index: core.serialization.number(),
     object: core.serialization.lazy(() => __awaiter(void 0, void 0, void 0, function* () { return (yield Promise.resolve().then(() => __importStar(require("..")))).ObjectType; })).optional(),
 });

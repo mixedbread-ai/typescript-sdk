@@ -26,10 +26,13 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.MultiEncodingsEmbeddingEmbeddingValue = void 0;
+exports.MultipleEncodingsEmbeddingItem = void 0;
 const core = __importStar(require("../../core"));
-exports.MultiEncodingsEmbeddingEmbeddingValue = core.serialization.undiscriminatedUnion([
-    core.serialization.list(core.serialization.number()),
-    core.serialization.string(),
-    core.serialization.list(core.serialization.number()),
-]);
+exports.MultipleEncodingsEmbeddingItem = core.serialization.object({
+    base64: core.serialization.list(core.serialization.string()),
+    binary: core.serialization.list(core.serialization.number()),
+    float: core.serialization.list(core.serialization.number()),
+    int8: core.serialization.list(core.serialization.number()),
+    ubinary: core.serialization.list(core.serialization.number()),
+    uint8: core.serialization.list(core.serialization.number()),
+});

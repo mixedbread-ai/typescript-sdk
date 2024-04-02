@@ -38,9 +38,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.RerankingRequest = void 0;
 const core = __importStar(require("../../../core"));
 exports.RerankingRequest = core.serialization.object({
-    model: core.serialization.string(),
     input: core.serialization.list(core.serialization.lazyObject(() => __awaiter(void 0, void 0, void 0, function* () { return (yield Promise.resolve().then(() => __importStar(require("../..")))).TextDocument; }))),
+    model: core.serialization.string(),
     query: core.serialization.lazyObject(() => __awaiter(void 0, void 0, void 0, function* () { return (yield Promise.resolve().then(() => __importStar(require("../..")))).TextDocument; })),
-    topK: core.serialization.property("top_k", core.serialization.number().optional()),
     returnInput: core.serialization.property("return_input", core.serialization.boolean().optional()),
+    topK: core.serialization.property("top_k", core.serialization.number().optional()),
 });

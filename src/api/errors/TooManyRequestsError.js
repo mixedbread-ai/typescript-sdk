@@ -28,7 +28,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TooManyRequestsError = void 0;
 const errors = __importStar(require("../../errors"));
-class TooManyRequestsError extends errors.MixedbreadAiApiError {
+class TooManyRequestsError extends errors.MixedbreadAIError {
     constructor(body) {
         super({
             message: "TooManyRequestsError",

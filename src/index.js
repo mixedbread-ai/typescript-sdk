@@ -23,12 +23,12 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.MixedbreadAiApiTimeoutError = exports.MixedbreadAiApiError = exports.MixedbreadAiApiEnvironment = exports.MixedbreadAiApiClient = exports.MixedbreadAiApi = void 0;
-exports.MixedbreadAiApi = __importStar(require("./api"));
+exports.MixedbreadAITimeoutError = exports.MixedbreadAIError = exports.MixedbreadAIEnvironment = exports.MixedbreadAIClient = exports.MixedbreadAI = void 0;
+exports.MixedbreadAI = __importStar(require("./api"));
 var Client_1 = require("./Client");
-Object.defineProperty(exports, "MixedbreadAiApiClient", { enumerable: true, get: function () { return Client_1.MixedbreadAiApiClient; } });
+Object.defineProperty(exports, "MixedbreadAIClient", { enumerable: true, get: function () { return Client_1.MixedbreadAIClient; } });
 var environments_1 = require("./environments");
-Object.defineProperty(exports, "MixedbreadAiApiEnvironment", { enumerable: true, get: function () { return environments_1.MixedbreadAiApiEnvironment; } });
+Object.defineProperty(exports, "MixedbreadAIEnvironment", { enumerable: true, get: function () { return environments_1.MixedbreadAIEnvironment; } });
 var errors_1 = require("./errors");
-Object.defineProperty(exports, "MixedbreadAiApiError", { enumerable: true, get: function () { return errors_1.MixedbreadAiApiError; } });
-Object.defineProperty(exports, "MixedbreadAiApiTimeoutError", { enumerable: true, get: function () { return errors_1.MixedbreadAiApiTimeoutError; } });
+Object.defineProperty(exports, "MixedbreadAIError", { enumerable: true, get: function () { return errors_1.MixedbreadAIError; } });
+Object.defineProperty(exports, "MixedbreadAITimeoutError", { enumerable: true, get: function () { return errors_1.MixedbreadAITimeoutError; } });

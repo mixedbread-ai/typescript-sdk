@@ -38,8 +38,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.MxbaiWebError = void 0;
 const core = __importStar(require("../../core"));
 exports.MxbaiWebError = core.serialization.object({
+    details: core.serialization.lazy(() => __awaiter(void 0, void 0, void 0, function* () { return (yield Promise.resolve().then(() => __importStar(require("..")))).MxbaiWebErrorDetails; })).optional(),
+    message: core.serialization.string().optional(),
     type: core.serialization.string().optional(),
     url: core.serialization.string().optional(),
-    message: core.serialization.string().optional(),
-    details: core.serialization.lazy(() => __awaiter(void 0, void 0, void 0, function* () { return (yield Promise.resolve().then(() => __importStar(require("..")))).MxbaiWebErrorDetails; })).optional(),
 });

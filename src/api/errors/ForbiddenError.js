@@ -28,7 +28,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ForbiddenError = void 0;
 const errors = __importStar(require("../../errors"));
-class ForbiddenError extends errors.MixedbreadAiApiError {
+class ForbiddenError extends errors.MixedbreadAIError {
     constructor(body) {
         super({
             message: "ForbiddenError",

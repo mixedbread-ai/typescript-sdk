@@ -38,29 +38,29 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.MixedbreadAiApiClient = void 0;
+exports.MixedbreadAIClient = void 0;
 const environments = __importStar(require("./environments"));
 const core = __importStar(require("./core"));
-const MixedbreadAiApi = __importStar(require("./api"));
+const MixedbreadAI = __importStar(require("./api"));
 const serializers = __importStar(require("./serialization"));
 const url_join_1 = __importDefault(require("url-join"));
 const errors = __importStar(require("./errors"));
-class MixedbreadAiApiClient {
+class MixedbreadAIClient {
     constructor(_options) {
         this._options = _options;
     }
     /**
      * Create embeddings for text or images using the specified model, encoding format, and normalization.
-     * @throws {@link MixedbreadAiApi.BadRequestError}
-     * @throws {@link MixedbreadAiApi.UnauthorizedError}
-     * @throws {@link MixedbreadAiApi.ForbiddenError}
-     * @throws {@link MixedbreadAiApi.NotFoundError}
-     * @throws {@link MixedbreadAiApi.UnprocessableEntityError}
-     * @throws {@link MixedbreadAiApi.TooManyRequestsError}
-     * @throws {@link MixedbreadAiApi.InternalServerError}
+     * @throws {@link MixedbreadAI.BadRequestError}
+     * @throws {@link MixedbreadAI.UnauthorizedError}
+     * @throws {@link MixedbreadAI.ForbiddenError}
+     * @throws {@link MixedbreadAI.NotFoundError}
+     * @throws {@link MixedbreadAI.UnprocessableEntityError}
+     * @throws {@link MixedbreadAI.TooManyRequestsError}
+     * @throws {@link MixedbreadAI.InternalServerError}
      *
      * @example
-     *     await mixedbreadAiApi.embeddings({
+     *     await mixedbreadAi.embeddings({
      *         model: "model"
      *     })
      */
@@ -68,7 +68,7 @@ class MixedbreadAiApiClient {
         var _a;
         return __awaiter(this, void 0, void 0, function* () {
             const _response = yield core.fetcher({
-                url: (0, url_join_1.default)((_a = (yield core.Supplier.get(this._options.environment))) !== null && _a !== void 0 ? _a : environments.MixedbreadAiApiEnvironment.Default, "v1/embeddings"),
+                url: (0, url_join_1.default)((_a = (yield core.Supplier.get(this._options.environment))) !== null && _a !== void 0 ? _a : environments.MixedbreadAIEnvironment.Default, "v1/embeddings"),
                 method: "POST",
                 headers: {
                     Authorization: yield this._getAuthorizationHeader(),
@@ -84,62 +84,70 @@ class MixedbreadAiApiClient {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
+                    skipValidation: true,
                     breadcrumbsPrefix: ["response"],
                 });
             }
             if (_response.error.reason === "status-code") {
                 switch (_response.error.statusCode) {
                     case 400:
-                        throw new MixedbreadAiApi.BadRequestError(yield serializers.BadRequestErrorBody.parseOrThrow(_response.error.body, {
+                        throw new MixedbreadAI.BadRequestError(yield serializers.BadRequestErrorBody.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
+                            skipValidation: true,
                             breadcrumbsPrefix: ["response"],
                         }));
                     case 401:
-                        throw new MixedbreadAiApi.UnauthorizedError(yield serializers.UnauthorizedErrorBody.parseOrThrow(_response.error.body, {
+                        throw new MixedbreadAI.UnauthorizedError(yield serializers.UnauthorizedErrorBody.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
+                            skipValidation: true,
                             breadcrumbsPrefix: ["response"],
                         }));
                     case 403:
-                        throw new MixedbreadAiApi.ForbiddenError(yield serializers.ForbiddenErrorBody.parseOrThrow(_response.error.body, {
+                        throw new MixedbreadAI.ForbiddenError(yield serializers.ForbiddenErrorBody.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
+                            skipValidation: true,
                             breadcrumbsPrefix: ["response"],
                         }));
                     case 404:
-                        throw new MixedbreadAiApi.NotFoundError(yield serializers.NotFoundErrorBody.parseOrThrow(_response.error.body, {
+                        throw new MixedbreadAI.NotFoundError(yield serializers.NotFoundErrorBody.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
+                            skipValidation: true,
                             breadcrumbsPrefix: ["response"],
                         }));
                     case 422:
-                        throw new MixedbreadAiApi.UnprocessableEntityError(yield serializers.ValidationError.parseOrThrow(_response.error.body, {
+                        throw new MixedbreadAI.UnprocessableEntityError(yield serializers.ValidationError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
+                            skipValidation: true,
                             breadcrumbsPrefix: ["response"],
                         }));
                     case 429:
-                        throw new MixedbreadAiApi.TooManyRequestsError(yield serializers.TooManyRequestsErrorBody.parseOrThrow(_response.error.body, {
+                        throw new MixedbreadAI.TooManyRequestsError(yield serializers.TooManyRequestsErrorBody.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
+                            skipValidation: true,
                             breadcrumbsPrefix: ["response"],
                         }));
                     case 500:
-                        throw new MixedbreadAiApi.InternalServerError(yield serializers.InternalError.parseOrThrow(_response.error.body, {
+                        throw new MixedbreadAI.InternalServerError(yield serializers.InternalError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
+                            skipValidation: true,
                             breadcrumbsPrefix: ["response"],
                         }));
                     default:
-                        throw new errors.MixedbreadAiApiError({
+                        throw new errors.MixedbreadAIError({
                             statusCode: _response.error.statusCode,
                             body: _response.error.body,
                         });
@@ -147,46 +155,46 @@ class MixedbreadAiApiClient {
             }
             switch (_response.error.reason) {
                 case "non-json":
-                    throw new errors.MixedbreadAiApiError({
+                    throw new errors.MixedbreadAIError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.rawBody,
                     });
                 case "timeout":
-                    throw new errors.MixedbreadAiApiTimeoutError();
+                    throw new errors.MixedbreadAITimeoutError();
                 case "unknown":
-                    throw new errors.MixedbreadAiApiError({
+                    throw new errors.MixedbreadAIError({
                         message: _response.error.errorMessage,
                     });
             }
         });
     }
     /**
-     * @throws {@link MixedbreadAiApi.BadRequestError}
-     * @throws {@link MixedbreadAiApi.UnauthorizedError}
-     * @throws {@link MixedbreadAiApi.ForbiddenError}
-     * @throws {@link MixedbreadAiApi.NotFoundError}
-     * @throws {@link MixedbreadAiApi.UnprocessableEntityError}
-     * @throws {@link MixedbreadAiApi.TooManyRequestsError}
-     * @throws {@link MixedbreadAiApi.InternalServerError}
+     * @throws {@link MixedbreadAI.BadRequestError}
+     * @throws {@link MixedbreadAI.UnauthorizedError}
+     * @throws {@link MixedbreadAI.ForbiddenError}
+     * @throws {@link MixedbreadAI.NotFoundError}
+     * @throws {@link MixedbreadAI.UnprocessableEntityError}
+     * @throws {@link MixedbreadAI.TooManyRequestsError}
+     * @throws {@link MixedbreadAI.InternalServerError}
      *
      * @example
-     *     await mixedbreadAiApi.reranking({
-     *         model: "model",
+     *     await mixedbreadAi.reranking({
      *         input: [{
      *                 text: "text"
      *             }],
+     *         model: "model",
      *         query: {
      *             text: "text"
      *         },
-     *         topK: 10,
-     *         returnInput: false
+     *         returnInput: false,
+     *         topK: 10
      *     })
      */
     reranking(request, requestOptions) {
         var _a;
         return __awaiter(this, void 0, void 0, function* () {
             const _response = yield core.fetcher({
-                url: (0, url_join_1.default)((_a = (yield core.Supplier.get(this._options.environment))) !== null && _a !== void 0 ? _a : environments.MixedbreadAiApiEnvironment.Default, "v1/reranking"),
+                url: (0, url_join_1.default)((_a = (yield core.Supplier.get(this._options.environment))) !== null && _a !== void 0 ? _a : environments.MixedbreadAIEnvironment.Default, "v1/reranking"),
                 method: "POST",
                 headers: {
                     Authorization: yield this._getAuthorizationHeader(),
@@ -202,62 +210,70 @@ class MixedbreadAiApiClient {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
+                    skipValidation: true,
                     breadcrumbsPrefix: ["response"],
                 });
             }
             if (_response.error.reason === "status-code") {
                 switch (_response.error.statusCode) {
                     case 400:
-                        throw new MixedbreadAiApi.BadRequestError(yield serializers.BadRequestErrorBody.parseOrThrow(_response.error.body, {
+                        throw new MixedbreadAI.BadRequestError(yield serializers.BadRequestErrorBody.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
+                            skipValidation: true,
                             breadcrumbsPrefix: ["response"],
                         }));
                     case 401:
-                        throw new MixedbreadAiApi.UnauthorizedError(yield serializers.UnauthorizedErrorBody.parseOrThrow(_response.error.body, {
+                        throw new MixedbreadAI.UnauthorizedError(yield serializers.UnauthorizedErrorBody.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
+                            skipValidation: true,
                             breadcrumbsPrefix: ["response"],
                         }));
                     case 403:
-                        throw new MixedbreadAiApi.ForbiddenError(yield serializers.ForbiddenErrorBody.parseOrThrow(_response.error.body, {
+                        throw new MixedbreadAI.ForbiddenError(yield serializers.ForbiddenErrorBody.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
+                            skipValidation: true,
                             breadcrumbsPrefix: ["response"],
                         }));
                     case 404:
-                        throw new MixedbreadAiApi.NotFoundError(yield serializers.NotFoundErrorBody.parseOrThrow(_response.error.body, {
+                        throw new MixedbreadAI.NotFoundError(yield serializers.NotFoundErrorBody.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
+                            skipValidation: true,
                             breadcrumbsPrefix: ["response"],
                         }));
                     case 422:
-                        throw new MixedbreadAiApi.UnprocessableEntityError(yield serializers.ValidationError.parseOrThrow(_response.error.body, {
+                        throw new MixedbreadAI.UnprocessableEntityError(yield serializers.ValidationError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
+                            skipValidation: true,
                             breadcrumbsPrefix: ["response"],
                         }));
                     case 429:
-                        throw new MixedbreadAiApi.TooManyRequestsError(yield serializers.TooManyRequestsErrorBody.parseOrThrow(_response.error.body, {
+                        throw new MixedbreadAI.TooManyRequestsError(yield serializers.TooManyRequestsErrorBody.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
+                            skipValidation: true,
                             breadcrumbsPrefix: ["response"],
                         }));
                     case 500:
-                        throw new MixedbreadAiApi.InternalServerError(yield serializers.InternalError.parseOrThrow(_response.error.body, {
+                        throw new MixedbreadAI.InternalServerError(yield serializers.InternalError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
+                            skipValidation: true,
                             breadcrumbsPrefix: ["response"],
                         }));
                     default:
-                        throw new errors.MixedbreadAiApiError({
+                        throw new errors.MixedbreadAIError({
                             statusCode: _response.error.statusCode,
                             body: _response.error.body,
                         });
@@ -265,14 +281,14 @@ class MixedbreadAiApiClient {
             }
             switch (_response.error.reason) {
                 case "non-json":
-                    throw new errors.MixedbreadAiApiError({
+                    throw new errors.MixedbreadAIError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.rawBody,
                     });
                 case "timeout":
-                    throw new errors.MixedbreadAiApiTimeoutError();
+                    throw new errors.MixedbreadAITimeoutError();
                 case "unknown":
-                    throw new errors.MixedbreadAiApiError({
+                    throw new errors.MixedbreadAIError({
                         message: _response.error.errorMessage,
                     });
             }
@@ -285,4 +301,4 @@ class MixedbreadAiApiClient {
         });
     }
 }
-exports.MixedbreadAiApiClient = MixedbreadAiApiClient;
+exports.MixedbreadAIClient = MixedbreadAIClient;

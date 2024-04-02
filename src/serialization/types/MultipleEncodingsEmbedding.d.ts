@@ -4,12 +4,11 @@
 import * as serializers from "..";
 import * as MixedbreadAI from "../../api";
 import * as core from "../../core";
-export declare const RankedDocument: core.serialization.ObjectSchema<serializers.RankedDocument.Raw, MixedbreadAI.RankedDocument>;
-export declare namespace RankedDocument {
+export declare const MultipleEncodingsEmbedding: core.serialization.ObjectSchema<serializers.MultipleEncodingsEmbedding.Raw, MixedbreadAI.MultipleEncodingsEmbedding>;
+export declare namespace MultipleEncodingsEmbedding {
     interface Raw {
+        embedding: serializers.MultipleEncodingsEmbeddingItem.Raw;
         index: number;
-        input?: unknown;
         object?: serializers.ObjectType.Raw | null;
-        score: number;
     }
 }

@@ -38,7 +38,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Embedding = void 0;
 const core = __importStar(require("../../core"));
 exports.Embedding = core.serialization.object({
-    embedding: core.serialization.list(core.serialization.number()),
+    embedding: core.serialization.lazy(() => __awaiter(void 0, void 0, void 0, function* () { return (yield Promise.resolve().then(() => __importStar(require("..")))).EmbeddingItem; })),
     index: core.serialization.number(),
     object: core.serialization.lazy(() => __awaiter(void 0, void 0, void 0, function* () { return (yield Promise.resolve().then(() => __importStar(require("..")))).ObjectType; })).optional(),
 });

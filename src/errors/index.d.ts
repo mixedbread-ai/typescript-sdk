@@ -1,2 +1,2 @@
-export { MixedbreadAiApiError } from "./MixedbreadAiApiError";
-export { MixedbreadAiApiTimeoutError } from "./MixedbreadAiApiTimeoutError";
+export { MixedbreadAIError } from "./MixedbreadAIError";
+export { MixedbreadAITimeoutError } from "./MixedbreadAITimeoutError";

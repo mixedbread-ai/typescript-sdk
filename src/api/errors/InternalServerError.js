@@ -28,7 +28,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.InternalServerError = void 0;
 const errors = __importStar(require("../../errors"));
-class InternalServerError extends errors.MixedbreadAiApiError {
+class InternalServerError extends errors.MixedbreadAIError {
     constructor(body) {
         super({
             message: "InternalServerError",

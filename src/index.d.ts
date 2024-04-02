@@ -1,4 +1,4 @@
-export * as MixedbreadAiApi from "./api";
-export { MixedbreadAiApiClient } from "./Client";
-export { MixedbreadAiApiEnvironment } from "./environments";
-export { MixedbreadAiApiError, MixedbreadAiApiTimeoutError } from "./errors";
+export * as MixedbreadAI from "./api";
+export { MixedbreadAIClient } from "./Client";
+export { MixedbreadAIEnvironment } from "./environments";
+export { MixedbreadAIError, MixedbreadAITimeoutError } from "./errors";

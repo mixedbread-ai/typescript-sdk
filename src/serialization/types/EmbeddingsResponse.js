@@ -38,11 +38,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.EmbeddingsResponse = void 0;
 const core = __importStar(require("../../core"));
 exports.EmbeddingsResponse = core.serialization.object({
-    usage: core.serialization.lazyObject(() => __awaiter(void 0, void 0, void 0, function* () { return (yield Promise.resolve().then(() => __importStar(require("..")))).Usage; })),
-    model: core.serialization.string(),
     data: core.serialization.lazy(() => __awaiter(void 0, void 0, void 0, function* () { return (yield Promise.resolve().then(() => __importStar(require("..")))).Data; })),
-    object: core.serialization.lazy(() => __awaiter(void 0, void 0, void 0, function* () { return (yield Promise.resolve().then(() => __importStar(require("..")))).ObjectType; })).optional(),
-    normalized: core.serialization.boolean(),
-    encodingFormat: core.serialization.property("encoding_format", core.serialization.lazy(() => __awaiter(void 0, void 0, void 0, function* () { return (yield Promise.resolve().then(() => __importStar(require("..")))).EmbeddingsResponseEncodingFormat; }))),
     dimensions: core.serialization.number().optional(),
+    encodingFormat: core.serialization.property("encoding_format", core.serialization.lazy(() => __awaiter(void 0, void 0, void 0, function* () { return (yield Promise.resolve().then(() => __importStar(require("..")))).EmbeddingsResponseEncodingFormat; }))),
+    model: core.serialization.string(),
+    normalized: core.serialization.boolean(),
+    object: core.serialization.lazy(() => __awaiter(void 0, void 0, void 0, function* () { return (yield Promise.resolve().then(() => __importStar(require("..")))).ObjectType; })).optional(),
+    usage: core.serialization.lazyObject(() => __awaiter(void 0, void 0, void 0, function* () { return (yield Promise.resolve().then(() => __importStar(require("..")))).Usage; })),
 });

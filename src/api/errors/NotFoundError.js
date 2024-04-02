@@ -28,7 +28,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.NotFoundError = void 0;
 const errors = __importStar(require("../../errors"));
-class NotFoundError extends errors.MixedbreadAiApiError {
+class NotFoundError extends errors.MixedbreadAIError {
     constructor(body) {
         super({
             message: "NotFoundError",

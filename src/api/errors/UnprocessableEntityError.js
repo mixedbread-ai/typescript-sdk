@@ -28,7 +28,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UnprocessableEntityError = void 0;
 const errors = __importStar(require("../../errors"));
-class UnprocessableEntityError extends errors.MixedbreadAiApiError {
+class UnprocessableEntityError extends errors.MixedbreadAIError {
     constructor(body) {
         super({
             message: "UnprocessableEntityError",

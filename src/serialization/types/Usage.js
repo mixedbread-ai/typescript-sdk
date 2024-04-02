@@ -29,7 +29,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Usage = void 0;
 const core = __importStar(require("../../core"));
 exports.Usage = core.serialization.object({
+    completionTokens: core.serialization.property("completion_tokens", core.serialization.number().optional()),
     promptTokens: core.serialization.property("prompt_tokens", core.serialization.number()),
     totalTokens: core.serialization.property("total_tokens", core.serialization.number()),
-    completionTokens: core.serialization.property("completion_tokens", core.serialization.number().optional()),
 });
