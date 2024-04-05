@@ -5,8 +5,8 @@
 import * as MixedbreadAI from "..";
 
 export interface MxbaiApiError {
-    details?: MixedbreadAI.MxbaiApiErrorDetails;
-    message?: string;
     type?: string;
     url?: string;
+    message?: string;
+    details?: MixedbreadAI.MxbaiApiErrorDetails;
 }

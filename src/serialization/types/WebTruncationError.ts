@@ -11,16 +11,16 @@ export const WebTruncationError: core.serialization.ObjectSchema<
     MixedbreadAI.WebTruncationError
 > = core.serialization.object({
     type: core.serialization.stringLiteral("truncation_error").optional(),
-    details: core.serialization.lazy(async () => (await import("..")).MxbaiApiErrorDetails).optional(),
-    message: core.serialization.string().optional(),
     url: core.serialization.string().optional(),
+    message: core.serialization.string().optional(),
+    details: core.serialization.lazy(async () => (await import("..")).MxbaiApiErrorDetails).optional(),
 });
 
 export declare namespace WebTruncationError {
     interface Raw {
         type?: "truncation_error" | null;
-        details?: serializers.MxbaiApiErrorDetails.Raw | null;
-        message?: string | null;
         url?: string | null;
+        message?: string | null;
+        details?: serializers.MxbaiApiErrorDetails.Raw | null;
     }
 }

@@ -10,21 +10,21 @@ export const RerankingResponse: core.serialization.ObjectSchema<
     serializers.RerankingResponse.Raw,
     MixedbreadAI.RerankingResponse
 > = core.serialization.object({
-    data: core.serialization.list(core.serialization.lazyObject(async () => (await import("..")).RankedDocument)),
-    model: core.serialization.string(),
-    object: core.serialization.lazy(async () => (await import("..")).ObjectType).optional(),
-    returnInput: core.serialization.property("return_input", core.serialization.boolean()),
-    topK: core.serialization.property("top_k", core.serialization.number()),
     usage: core.serialization.lazyObject(async () => (await import("..")).Usage),
+    model: core.serialization.string(),
+    data: core.serialization.list(core.serialization.lazyObject(async () => (await import("..")).RankedDocument)),
+    object: core.serialization.lazy(async () => (await import("..")).ObjectType).optional(),
+    topK: core.serialization.property("top_k", core.serialization.number()),
+    returnInput: core.serialization.property("return_input", core.serialization.boolean()),
 });
 
 export declare namespace RerankingResponse {
     interface Raw {
-        data: serializers.RankedDocument.Raw[];
-        model: string;
-        object?: serializers.ObjectType.Raw | null;
-        return_input: boolean;
-        top_k: number;
         usage: serializers.Usage.Raw;
+        model: string;
+        data: serializers.RankedDocument.Raw[];
+        object?: serializers.ObjectType.Raw | null;
+        top_k: number;
+        return_input: boolean;
     }
 }

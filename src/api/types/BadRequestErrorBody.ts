@@ -6,7 +6,7 @@ import * as MixedbreadAI from "..";
 
 export interface BadRequestErrorBody {
     type?: "bad_request_error";
-    details?: MixedbreadAI.MxbaiApiErrorDetails;
-    message?: string;
     url?: string;
+    message?: string;
+    details?: MixedbreadAI.MxbaiApiErrorDetails;
 }

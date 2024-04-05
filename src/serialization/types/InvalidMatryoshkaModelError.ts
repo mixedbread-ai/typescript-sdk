@@ -11,16 +11,16 @@ export const InvalidMatryoshkaModelError: core.serialization.ObjectSchema<
     MixedbreadAI.InvalidMatryoshkaModelError
 > = core.serialization.object({
     type: core.serialization.stringLiteral("invalid_matryoshka_model_error").optional(),
-    details: core.serialization.lazy(async () => (await import("..")).MxbaiApiErrorDetails).optional(),
-    message: core.serialization.string().optional(),
     url: core.serialization.string().optional(),
+    message: core.serialization.string().optional(),
+    details: core.serialization.lazy(async () => (await import("..")).MxbaiApiErrorDetails).optional(),
 });
 
 export declare namespace InvalidMatryoshkaModelError {
     interface Raw {
         type?: "invalid_matryoshka_model_error" | null;
-        details?: serializers.MxbaiApiErrorDetails.Raw | null;
-        message?: string | null;
         url?: string | null;
+        message?: string | null;
+        details?: serializers.MxbaiApiErrorDetails.Raw | null;
     }
 }

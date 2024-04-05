@@ -11,16 +11,16 @@ export const UnauthorizedErrorBody: core.serialization.ObjectSchema<
     MixedbreadAI.UnauthorizedErrorBody
 > = core.serialization.object({
     type: core.serialization.stringLiteral("unauthorized_error").optional(),
-    details: core.serialization.lazy(async () => (await import("..")).MxbaiApiErrorDetails).optional(),
-    message: core.serialization.string().optional(),
     url: core.serialization.string().optional(),
+    message: core.serialization.string().optional(),
+    details: core.serialization.lazy(async () => (await import("..")).MxbaiApiErrorDetails).optional(),
 });
 
 export declare namespace UnauthorizedErrorBody {
     interface Raw {
         type?: "unauthorized_error" | null;
-        details?: serializers.MxbaiApiErrorDetails.Raw | null;
-        message?: string | null;
         url?: string | null;
+        message?: string | null;
+        details?: serializers.MxbaiApiErrorDetails.Raw | null;
     }
 }

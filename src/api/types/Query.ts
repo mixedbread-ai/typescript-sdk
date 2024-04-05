@@ -5,6 +5,6 @@
 import * as MixedbreadAI from "..";
 
 /**
- * The input documents to rerank
+ * The query to rerank the documents
  */
-export type Input = string[] | MixedbreadAI.TextDocument[];
+export type Query = MixedbreadAI.TextDocument | string;

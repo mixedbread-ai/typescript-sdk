@@ -5,16 +5,16 @@
 import * as MixedbreadAI from "..";
 
 export interface EmbeddingsResponse {
-    /** The created embeddings */
-    data: MixedbreadAI.Data;
-    dimensions?: number;
-    encodingFormat: MixedbreadAI.EmbeddingsResponseEncodingFormat;
-    /** The model used */
-    model: string;
-    /** Whether the embeddings are normalized */
-    normalized: boolean;
-    /** The object type of the response */
-    object?: MixedbreadAI.ObjectType;
     /** The usage of the model */
     usage: MixedbreadAI.Usage;
+    /** The model used */
+    model: string;
+    /** The created embeddings */
+    data: MixedbreadAI.Data;
+    /** The object type of the response */
+    object?: MixedbreadAI.ObjectType;
+    /** Whether the embeddings are normalized */
+    normalized: boolean;
+    encodingFormat: MixedbreadAI.EmbeddingsResponseEncodingFormat;
+    dimensions?: number;
 }

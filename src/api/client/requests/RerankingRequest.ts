@@ -7,26 +7,24 @@ import * as MixedbreadAI from "../..";
 /**
  * @example
  *     {
- *         input: [{
- *                 text: "text"
- *             }],
  *         model: "model",
+ *         input: ["input"],
  *         query: {
  *             text: "text"
  *         },
- *         returnInput: false,
- *         topK: 10
+ *         topK: 10,
+ *         returnInput: false
  *     }
  */
 export interface RerankingRequest {
-    /** The input documents to rerank */
-    input: MixedbreadAI.TextDocument[];
     /** The model to use for creating embeddings */
     model: string;
+    /** The input documents to rerank */
+    input: MixedbreadAI.Input;
     /** The query to rerank the documents */
-    query: MixedbreadAI.TextDocument;
-    /** Whether to return the documents */
-    returnInput?: boolean;
+    query: MixedbreadAI.Query;
     /** The number of documents to return */
     topK?: number;
+    /** Whether to return the documents */
+    returnInput?: boolean;
 }

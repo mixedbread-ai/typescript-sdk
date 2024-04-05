@@ -36,8 +36,8 @@ export class MixedbreadAIClient {
      *
      * @example
      *     await mixedbreadAi.embeddings({
-     *         input: "input",
-     *         model: "model"
+     *         model: "model",
+     *         input: "input"
      *     })
      */
     public async embeddings(
@@ -177,15 +177,13 @@ export class MixedbreadAIClient {
      *
      * @example
      *     await mixedbreadAi.reranking({
-     *         input: [{
-     *                 text: "text"
-     *             }],
      *         model: "model",
+     *         input: ["input"],
      *         query: {
      *             text: "text"
      *         },
-     *         returnInput: false,
-     *         topK: 10
+     *         topK: 10,
+     *         returnInput: false
      *     })
      */
     public async reranking(

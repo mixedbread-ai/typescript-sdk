@@ -6,7 +6,7 @@ import * as MixedbreadAI from "..";
 
 export interface ModelNotFoundError {
     type?: "model_not_found_error";
-    details?: MixedbreadAI.MxbaiApiErrorDetails;
-    message?: string;
     url?: string;
+    message?: string;
+    details?: MixedbreadAI.MxbaiApiErrorDetails;
 }

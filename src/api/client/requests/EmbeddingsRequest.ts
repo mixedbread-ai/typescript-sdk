@@ -7,21 +7,21 @@ import * as MixedbreadAI from "../..";
 /**
  * @example
  *     {
- *         input: "input",
- *         model: "model"
+ *         model: "model",
+ *         input: "input"
  *     }
  */
 export interface EmbeddingsRequest {
-    dimensions?: number;
-    encodingFormat?: MixedbreadAI.EmbeddingsRequestEncodingFormat;
-    input: MixedbreadAI.Input;
-    instruction?: string;
     /** The model to use for creating embeddings */
     model: string;
+    input: MixedbreadAI.MultiModalInput;
     /** Whether to normalize the embeddings */
     normalized?: boolean;
-    prompt?: string;
-    texts?: string[];
+    encodingFormat?: MixedbreadAI.EmbeddingsRequestEncodingFormat;
     /** The truncation strategy to use for the input */
     truncationStrategy?: MixedbreadAI.TruncationStrategy;
+    dimensions?: number;
+    instruction?: string;
+    texts?: string[];
+    prompt?: string;
 }

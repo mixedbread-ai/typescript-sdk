@@ -9,16 +9,16 @@ import * as core from "../../core";
 export const InternalError: core.serialization.ObjectSchema<serializers.InternalError.Raw, MixedbreadAI.InternalError> =
     core.serialization.object({
         type: core.serialization.stringLiteral("server_error").optional(),
-        details: core.serialization.lazy(async () => (await import("..")).MxbaiApiErrorDetails).optional(),
-        message: core.serialization.string().optional(),
         url: core.serialization.string().optional(),
+        message: core.serialization.string().optional(),
+        details: core.serialization.lazy(async () => (await import("..")).MxbaiApiErrorDetails).optional(),
     });
 
 export declare namespace InternalError {
     interface Raw {
         type?: "server_error" | null;
-        details?: serializers.MxbaiApiErrorDetails.Raw | null;
-        message?: string | null;
         url?: string | null;
+        message?: string | null;
+        details?: serializers.MxbaiApiErrorDetails.Raw | null;
     }
 }

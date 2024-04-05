@@ -10,33 +10,33 @@ export const EmbeddingsRequest: core.serialization.Schema<
     serializers.EmbeddingsRequest.Raw,
     MixedbreadAI.EmbeddingsRequest
 > = core.serialization.object({
-    dimensions: core.serialization.number().optional(),
+    model: core.serialization.string(),
+    input: core.serialization.lazy(async () => (await import("../..")).MultiModalInput),
+    normalized: core.serialization.boolean().optional(),
     encodingFormat: core.serialization.property(
         "encoding_format",
         core.serialization.lazy(async () => (await import("../..")).EmbeddingsRequestEncodingFormat).optional()
     ),
-    input: core.serialization.lazy(async () => (await import("../..")).Input),
-    instruction: core.serialization.string().optional(),
-    model: core.serialization.string(),
-    normalized: core.serialization.boolean().optional(),
-    prompt: core.serialization.string().optional(),
-    texts: core.serialization.list(core.serialization.string()).optional(),
     truncationStrategy: core.serialization.property(
         "truncation_strategy",
         core.serialization.lazy(async () => (await import("../..")).TruncationStrategy).optional()
     ),
+    dimensions: core.serialization.number().optional(),
+    instruction: core.serialization.string().optional(),
+    texts: core.serialization.list(core.serialization.string()).optional(),
+    prompt: core.serialization.string().optional(),
 });
 
 export declare namespace EmbeddingsRequest {
     interface Raw {
-        dimensions?: number | null;
-        encoding_format?: serializers.EmbeddingsRequestEncodingFormat.Raw | null;
-        input: serializers.Input.Raw;
-        instruction?: string | null;
         model: string;
+        input: serializers.MultiModalInput.Raw;
         normalized?: boolean | null;
-        prompt?: string | null;
-        texts?: string[] | null;
+        encoding_format?: serializers.EmbeddingsRequestEncodingFormat.Raw | null;
         truncation_strategy?: serializers.TruncationStrategy.Raw | null;
+        dimensions?: number | null;
+        instruction?: string | null;
+        texts?: string[] | null;
+        prompt?: string | null;
     }
 }

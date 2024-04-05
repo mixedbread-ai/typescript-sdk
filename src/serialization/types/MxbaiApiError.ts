@@ -8,17 +8,17 @@ import * as core from "../../core";
 
 export const MxbaiApiError: core.serialization.ObjectSchema<serializers.MxbaiApiError.Raw, MixedbreadAI.MxbaiApiError> =
     core.serialization.object({
-        details: core.serialization.lazy(async () => (await import("..")).MxbaiApiErrorDetails).optional(),
-        message: core.serialization.string().optional(),
         type: core.serialization.string().optional(),
         url: core.serialization.string().optional(),
+        message: core.serialization.string().optional(),
+        details: core.serialization.lazy(async () => (await import("..")).MxbaiApiErrorDetails).optional(),
     });
 
 export declare namespace MxbaiApiError {
     interface Raw {
-        details?: serializers.MxbaiApiErrorDetails.Raw | null;
-        message?: string | null;
         type?: string | null;
         url?: string | null;
+        message?: string | null;
+        details?: serializers.MxbaiApiErrorDetails.Raw | null;
     }
 }

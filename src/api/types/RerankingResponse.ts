@@ -5,16 +5,16 @@
 import * as MixedbreadAI from "..";
 
 export interface RerankingResponse {
-    /** The ranked documents */
-    data: MixedbreadAI.RankedDocument[];
-    /** The model used */
-    model: string;
-    /** The object type of the response */
-    object?: MixedbreadAI.ObjectType;
-    /** Whether to return the documents */
-    returnInput: boolean;
-    /** The number of documents to return */
-    topK: number;
     /** The usage of the model */
     usage: MixedbreadAI.Usage;
+    /** The model used */
+    model: string;
+    /** The ranked documents */
+    data: MixedbreadAI.RankedDocument[];
+    /** The object type of the response */
+    object?: MixedbreadAI.ObjectType;
+    /** The number of documents to return */
+    topK: number;
+    /** Whether to return the documents */
+    returnInput: boolean;
 }

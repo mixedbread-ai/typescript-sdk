@@ -8,15 +8,15 @@ import * as core from "../../core";
 
 export const Usage: core.serialization.ObjectSchema<serializers.Usage.Raw, MixedbreadAI.Usage> =
     core.serialization.object({
-        completionTokens: core.serialization.property("completion_tokens", core.serialization.number().optional()),
         promptTokens: core.serialization.property("prompt_tokens", core.serialization.number()),
         totalTokens: core.serialization.property("total_tokens", core.serialization.number()),
+        completionTokens: core.serialization.property("completion_tokens", core.serialization.number().optional()),
     });
 
 export declare namespace Usage {
     interface Raw {
-        completion_tokens?: number | null;
         prompt_tokens: number;
         total_tokens: number;
+        completion_tokens?: number | null;
     }
 }

@@ -10,19 +10,19 @@ export const RerankingRequest: core.serialization.Schema<
     serializers.RerankingRequest.Raw,
     MixedbreadAI.RerankingRequest
 > = core.serialization.object({
-    input: core.serialization.list(core.serialization.lazyObject(async () => (await import("../..")).TextDocument)),
     model: core.serialization.string(),
-    query: core.serialization.lazyObject(async () => (await import("../..")).TextDocument),
-    returnInput: core.serialization.property("return_input", core.serialization.boolean().optional()),
+    input: core.serialization.lazy(async () => (await import("../..")).Input),
+    query: core.serialization.lazy(async () => (await import("../..")).Query),
     topK: core.serialization.property("top_k", core.serialization.number().optional()),
+    returnInput: core.serialization.property("return_input", core.serialization.boolean().optional()),
 });
 
 export declare namespace RerankingRequest {
     interface Raw {
-        input: serializers.TextDocument.Raw[];
         model: string;
-        query: serializers.TextDocument.Raw;
-        return_input?: boolean | null;
+        input: serializers.Input.Raw;
+        query: serializers.Query.Raw;
         top_k?: number | null;
+        return_input?: boolean | null;
     }
 }

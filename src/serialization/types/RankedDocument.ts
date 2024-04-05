@@ -11,16 +11,16 @@ export const RankedDocument: core.serialization.ObjectSchema<
     MixedbreadAI.RankedDocument
 > = core.serialization.object({
     index: core.serialization.number(),
+    score: core.serialization.number(),
     input: core.serialization.unknown(),
     object: core.serialization.lazy(async () => (await import("..")).ObjectType).optional(),
-    score: core.serialization.number(),
 });
 
 export declare namespace RankedDocument {
     interface Raw {
         index: number;
+        score: number;
         input?: unknown;
         object?: serializers.ObjectType.Raw | null;
-        score: number;
     }
 }

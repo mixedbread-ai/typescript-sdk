@@ -7,9 +7,9 @@ import * as MixedbreadAI from "..";
 export interface RankedDocument {
     /** The index of the document */
     index: number;
+    /** The score of the document */
+    score: number;
     input?: unknown;
     /** The object type */
     object?: MixedbreadAI.ObjectType;
-    /** The score of the document */
-    score: number;
 }

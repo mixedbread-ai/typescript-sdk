@@ -10,21 +10,21 @@ export const MultipleEncodingsEmbeddingItem: core.serialization.ObjectSchema<
     serializers.MultipleEncodingsEmbeddingItem.Raw,
     MixedbreadAI.MultipleEncodingsEmbeddingItem
 > = core.serialization.object({
-    base64: core.serialization.list(core.serialization.string()),
-    binary: core.serialization.list(core.serialization.number()),
-    float: core.serialization.list(core.serialization.number()),
-    int8: core.serialization.list(core.serialization.number()),
-    ubinary: core.serialization.list(core.serialization.number()),
-    uint8: core.serialization.list(core.serialization.number()),
+    float: core.serialization.list(core.serialization.number()).optional(),
+    int8: core.serialization.list(core.serialization.number()).optional(),
+    uint8: core.serialization.list(core.serialization.number()).optional(),
+    binary: core.serialization.list(core.serialization.number()).optional(),
+    ubinary: core.serialization.list(core.serialization.number()).optional(),
+    base64: core.serialization.list(core.serialization.string()).optional(),
 });
 
 export declare namespace MultipleEncodingsEmbeddingItem {
     interface Raw {
-        base64: string[];
-        binary: number[];
-        float: number[];
-        int8: number[];
-        ubinary: number[];
-        uint8: number[];
+        float?: number[] | null;
+        int8?: number[] | null;
+        uint8?: number[] | null;
+        binary?: number[] | null;
+        ubinary?: number[] | null;
+        base64?: string[] | null;
     }
 }

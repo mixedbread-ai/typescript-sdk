@@ -11,16 +11,16 @@ export const NotFoundErrorBody: core.serialization.ObjectSchema<
     MixedbreadAI.NotFoundErrorBody
 > = core.serialization.object({
     type: core.serialization.stringLiteral("not_found_error").optional(),
-    details: core.serialization.lazy(async () => (await import("..")).MxbaiApiErrorDetails).optional(),
-    message: core.serialization.string().optional(),
     url: core.serialization.string().optional(),
+    message: core.serialization.string().optional(),
+    details: core.serialization.lazy(async () => (await import("..")).MxbaiApiErrorDetails).optional(),
 });
 
 export declare namespace NotFoundErrorBody {
     interface Raw {
         type?: "not_found_error" | null;
-        details?: serializers.MxbaiApiErrorDetails.Raw | null;
-        message?: string | null;
         url?: string | null;
+        message?: string | null;
+        details?: serializers.MxbaiApiErrorDetails.Raw | null;
     }
 }

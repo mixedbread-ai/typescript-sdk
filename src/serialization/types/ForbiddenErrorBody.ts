@@ -11,16 +11,16 @@ export const ForbiddenErrorBody: core.serialization.ObjectSchema<
     MixedbreadAI.ForbiddenErrorBody
 > = core.serialization.object({
     type: core.serialization.stringLiteral("forbidden_error").optional(),
-    details: core.serialization.lazy(async () => (await import("..")).MxbaiApiErrorDetails).optional(),
-    message: core.serialization.string().optional(),
     url: core.serialization.string().optional(),
+    message: core.serialization.string().optional(),
+    details: core.serialization.lazy(async () => (await import("..")).MxbaiApiErrorDetails).optional(),
 });
 
 export declare namespace ForbiddenErrorBody {
     interface Raw {
         type?: "forbidden_error" | null;
-        details?: serializers.MxbaiApiErrorDetails.Raw | null;
-        message?: string | null;
         url?: string | null;
+        message?: string | null;
+        details?: serializers.MxbaiApiErrorDetails.Raw | null;
     }
 }

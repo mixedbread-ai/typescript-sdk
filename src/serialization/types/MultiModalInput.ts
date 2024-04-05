@@ -6,12 +6,14 @@ import * as serializers from "..";
 import * as MixedbreadAI from "../../api";
 import * as core from "../../core";
 
-export const Input: core.serialization.Schema<serializers.Input.Raw, MixedbreadAI.Input> =
+export const MultiModalInput: core.serialization.Schema<serializers.MultiModalInput.Raw, MixedbreadAI.MultiModalInput> =
     core.serialization.undiscriminatedUnion([
+        core.serialization.string(),
         core.serialization.list(core.serialization.string()),
+        core.serialization.lazyObject(async () => (await import("..")).TextDocument),
         core.serialization.list(core.serialization.lazyObject(async () => (await import("..")).TextDocument)),
     ]);
 
-export declare namespace Input {
-    type Raw = string[] | serializers.TextDocument.Raw[];
+export declare namespace MultiModalInput {
+    type Raw = string | string[] | serializers.TextDocument.Raw | serializers.TextDocument.Raw[];
 }

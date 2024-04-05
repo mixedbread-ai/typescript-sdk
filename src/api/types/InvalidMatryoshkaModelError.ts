@@ -6,7 +6,7 @@ import * as MixedbreadAI from "..";
 
 export interface InvalidMatryoshkaModelError {
     type?: "invalid_matryoshka_model_error";
-    details?: MixedbreadAI.MxbaiApiErrorDetails;
-    message?: string;
     url?: string;
+    message?: string;
+    details?: MixedbreadAI.MxbaiApiErrorDetails;
 }

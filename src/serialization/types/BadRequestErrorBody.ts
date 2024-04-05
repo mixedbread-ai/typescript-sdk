@@ -11,16 +11,16 @@ export const BadRequestErrorBody: core.serialization.ObjectSchema<
     MixedbreadAI.BadRequestErrorBody
 > = core.serialization.object({
     type: core.serialization.stringLiteral("bad_request_error").optional(),
-    details: core.serialization.lazy(async () => (await import("..")).MxbaiApiErrorDetails).optional(),
-    message: core.serialization.string().optional(),
     url: core.serialization.string().optional(),
+    message: core.serialization.string().optional(),
+    details: core.serialization.lazy(async () => (await import("..")).MxbaiApiErrorDetails).optional(),
 });
 
 export declare namespace BadRequestErrorBody {
     interface Raw {
         type?: "bad_request_error" | null;
-        details?: serializers.MxbaiApiErrorDetails.Raw | null;
-        message?: string | null;
         url?: string | null;
+        message?: string | null;
+        details?: serializers.MxbaiApiErrorDetails.Raw | null;
     }
 }

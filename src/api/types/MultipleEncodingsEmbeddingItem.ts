@@ -3,10 +3,10 @@
  */
 
 export interface MultipleEncodingsEmbeddingItem {
-    base64: string[];
-    binary: number[];
-    float: number[];
-    int8: number[];
-    ubinary: number[];
-    uint8: number[];
+    float?: number[];
+    int8?: number[];
+    uint8?: number[];
+    binary?: number[];
+    ubinary?: number[];
+    base64?: string[];
 }

@@ -10,26 +10,26 @@ export const EmbeddingsResponse: core.serialization.ObjectSchema<
     serializers.EmbeddingsResponse.Raw,
     MixedbreadAI.EmbeddingsResponse
 > = core.serialization.object({
+    usage: core.serialization.lazyObject(async () => (await import("..")).Usage),
+    model: core.serialization.string(),
     data: core.serialization.lazy(async () => (await import("..")).Data),
-    dimensions: core.serialization.number().optional(),
+    object: core.serialization.lazy(async () => (await import("..")).ObjectType).optional(),
+    normalized: core.serialization.boolean(),
     encodingFormat: core.serialization.property(
         "encoding_format",
         core.serialization.lazy(async () => (await import("..")).EmbeddingsResponseEncodingFormat)
     ),
-    model: core.serialization.string(),
-    normalized: core.serialization.boolean(),
-    object: core.serialization.lazy(async () => (await import("..")).ObjectType).optional(),
-    usage: core.serialization.lazyObject(async () => (await import("..")).Usage),
+    dimensions: core.serialization.number().optional(),
 });
 
 export declare namespace EmbeddingsResponse {
     interface Raw {
-        data: serializers.Data.Raw;
-        dimensions?: number | null;
-        encoding_format: serializers.EmbeddingsResponseEncodingFormat.Raw;
-        model: string;
-        normalized: boolean;
-        object?: serializers.ObjectType.Raw | null;
         usage: serializers.Usage.Raw;
+        model: string;
+        data: serializers.Data.Raw;
+        object?: serializers.ObjectType.Raw | null;
+        normalized: boolean;
+        encoding_format: serializers.EmbeddingsResponseEncodingFormat.Raw;
+        dimensions?: number | null;
     }
 }

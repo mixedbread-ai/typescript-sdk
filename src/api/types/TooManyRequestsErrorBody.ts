@@ -6,7 +6,7 @@ import * as MixedbreadAI from "..";
 
 export interface TooManyRequestsErrorBody {
     type?: "too_many_requests_error";
-    details?: MixedbreadAI.MxbaiApiErrorDetails;
-    message?: string;
     url?: string;
+    message?: string;
+    details?: MixedbreadAI.MxbaiApiErrorDetails;
 }
