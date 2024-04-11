@@ -178,10 +178,10 @@ export class MixedbreadAIClient {
      * @example
      *     await mixedbreadAi.reranking({
      *         model: "model",
-     *         input: ["input"],
      *         query: {
      *             text: "text"
      *         },
+     *         input: ["input"],
      *         topK: 10,
      *         returnInput: false
      *     })

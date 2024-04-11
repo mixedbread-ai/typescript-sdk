@@ -1,5 +1,4 @@
 export * from "./EmbeddingsRequestEncodingFormat";
-export * from "./Input";
 export * from "./Query";
 export * from "./MxbaiApiErrorDetails";
 export * from "./MxbaiApiError";
@@ -21,6 +20,7 @@ export * from "./EmbeddingsResponseEncodingFormat";
 export * from "./EmbeddingsResponse";
 export * from "./EncodingFormat";
 export * from "./MultiModalInput";
+export * from "./MultiModalRerankingInput";
 export * from "./MultipleEncodingsEmbedding";
 export * from "./MultipleEncodingsEmbeddingItem";
 export * from "./ObjectType";
