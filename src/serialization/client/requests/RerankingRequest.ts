@@ -11,8 +11,12 @@ export const RerankingRequest: core.serialization.Schema<
     MixedbreadAI.RerankingRequest
 > = core.serialization.object({
     model: core.serialization.string(),
-    input: core.serialization.lazy(async () => (await import("../..")).Input),
     query: core.serialization.lazy(async () => (await import("../..")).Query),
+    input: core.serialization.lazy(async () => (await import("../..")).MultiModalRerankingInput),
+    rankFields: core.serialization.property(
+        "rank_fields",
+        core.serialization.list(core.serialization.string()).optional()
+    ),
     topK: core.serialization.property("top_k", core.serialization.number().optional()),
     returnInput: core.serialization.property("return_input", core.serialization.boolean().optional()),
 });
@@ -20,8 +24,9 @@ export const RerankingRequest: core.serialization.Schema<
 export declare namespace RerankingRequest {
     interface Raw {
         model: string;
-        input: serializers.Input.Raw;
         query: serializers.Query.Raw;
+        input: serializers.MultiModalRerankingInput.Raw;
+        rank_fields?: string[] | null;
         top_k?: number | null;
         return_input?: boolean | null;
     }
