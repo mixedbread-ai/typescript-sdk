@@ -22,8 +22,6 @@ export const EmbeddingsRequest: core.serialization.Schema<
         core.serialization.lazy(async () => (await import("../..")).TruncationStrategy).optional()
     ),
     dimensions: core.serialization.number().optional(),
-    instruction: core.serialization.string().optional(),
-    texts: core.serialization.list(core.serialization.string()).optional(),
     prompt: core.serialization.string().optional(),
 });
 
@@ -35,8 +33,6 @@ export declare namespace EmbeddingsRequest {
         encoding_format?: serializers.EmbeddingsRequestEncodingFormat.Raw | null;
         truncation_strategy?: serializers.TruncationStrategy.Raw | null;
         dimensions?: number | null;
-        instruction?: string | null;
-        texts?: string[] | null;
         prompt?: string | null;
     }
 }

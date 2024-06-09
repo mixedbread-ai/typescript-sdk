@@ -65,7 +65,7 @@ const mxbai = new MixedbreadAIClient({
 const embeddings = await mxbai.embeddings({
     model: "mixedbread-ai/mxbai-embed-large-v1",
     input: ["I like to eat apples.", "I like to eat bananas."],
-    prompt: "Represent this sentence for searching relevant passages"
+    prompt: "Represent this sentence for searching relevant passages:"
 });
 
 console.log(embeddings);
@@ -103,7 +103,7 @@ console.log(rerankedDocs);
 
 Replace `"{YOUR_API_KEY}"` with your actual API key. If you don't have an API key, you can get one for free by signing up for an account at [mixedbread.ai](https://mixedbread.ai/).
 
-## Error Handling
+## Error Handling and Retries
 The SDK will throw an error if there is an issue with the API request, such as an invalid API key or a network error. Make sure to handle these errors in your code using try/catch blocks or `.catch()` on promises.
 
 a subclass of [FernError](./src/errors/MxbaiApiError.ts)
@@ -116,6 +116,8 @@ try {
   await mxbai.embeddings({
     model: "mixedbread-ai/mxbai-embed-large-v1",
     input: ["I like to eat apples.", "I like to eat bananas."]
+  }, {
+    maxRetries: 3,
   });
 } catch (err) {
   if (err instanceof MxbaiApiError) {
