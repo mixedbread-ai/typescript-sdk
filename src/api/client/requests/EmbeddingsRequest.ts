@@ -21,7 +21,5 @@ export interface EmbeddingsRequest {
     /** The truncation strategy to use for the input */
     truncationStrategy?: MixedbreadAI.TruncationStrategy;
     dimensions?: number;
-    instruction?: string;
-    texts?: string[];
     prompt?: string;
 }
