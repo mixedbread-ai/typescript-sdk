@@ -9,12 +9,12 @@ export interface RerankingResponse {
     usage: MixedbreadAI.Usage;
     /** The model used */
     model: string;
-    /** The ranked documents */
+    /** The ranked documents. */
     data: MixedbreadAI.RankedDocument[];
     /** The object type of the response */
     object?: MixedbreadAI.ObjectType;
-    /** The number of documents to return */
+    /** The number of documents to return. */
     topK: number;
-    /** Whether to return the documents */
+    /** Whether to return the documents. */
     returnInput: boolean;
 }

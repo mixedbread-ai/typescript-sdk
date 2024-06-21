@@ -8,11 +8,13 @@ import * as core from "../../core";
 
 export const TextDocument: core.serialization.ObjectSchema<serializers.TextDocument.Raw, MixedbreadAI.TextDocument> =
     core.serialization.object({
+        type: core.serialization.stringLiteral("text").optional(),
         text: core.serialization.string(),
     });
 
 export declare namespace TextDocument {
     interface Raw {
+        type?: "text" | null;
         text: string;
     }
 }

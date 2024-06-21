@@ -5,9 +5,9 @@
 import * as MixedbreadAI from "..";
 
 export interface Embedding {
+    /** The encoded embedding. */
     embedding: MixedbreadAI.EmbeddingItem;
-    /** The index of the embedding */
+    /** The index of the embedding. */
     index: number;
-    /** The object type of the embedding */
-    object?: MixedbreadAI.ObjectType;
+    object: "embedding";
 }

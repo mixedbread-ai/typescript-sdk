@@ -7,18 +7,20 @@ import * as MixedbreadAI from "../..";
 /**
  * @example
  *     {
- *         model: "model",
- *         input: "input"
+ *         model: "mixedbread-ai/mxbai-embed-large-v1",
+ *         input: "This is a sample text input.",
+ *         normalized: true
  *     }
  */
 export interface EmbeddingsRequest {
-    /** The model to use for creating embeddings */
+    /** The model to use for creating embeddings. */
     model: string;
+    /** The input to create embeddings for. */
     input: MixedbreadAI.MultiModalInput;
-    /** Whether to normalize the embeddings */
+    /** Whether to normalize the embeddings. */
     normalized?: boolean;
     encodingFormat?: MixedbreadAI.EmbeddingsRequestEncodingFormat;
-    /** The truncation strategy to use for the input */
+    /** The truncation strategy to use for the input. */
     truncationStrategy?: MixedbreadAI.TruncationStrategy;
     dimensions?: number;
     prompt?: string;

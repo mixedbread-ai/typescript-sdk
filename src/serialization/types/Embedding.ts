@@ -10,13 +10,13 @@ export const Embedding: core.serialization.ObjectSchema<serializers.Embedding.Ra
     core.serialization.object({
         embedding: core.serialization.lazy(async () => (await import("..")).EmbeddingItem),
         index: core.serialization.number(),
-        object: core.serialization.lazy(async () => (await import("..")).ObjectType).optional(),
+        object: core.serialization.stringLiteral("embedding"),
     });
 
 export declare namespace Embedding {
     interface Raw {
         embedding: serializers.EmbeddingItem.Raw;
         index: number;
-        object?: serializers.ObjectType.Raw | null;
+        object: "embedding";
     }
 }

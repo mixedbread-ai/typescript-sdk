@@ -9,11 +9,11 @@ export interface EmbeddingsResponse {
     usage: MixedbreadAI.Usage;
     /** The model used */
     model: string;
-    /** The created embeddings */
+    /** The created embeddings. */
     data: MixedbreadAI.Data;
     /** The object type of the response */
     object?: MixedbreadAI.ObjectType;
-    /** Whether the embeddings are normalized */
+    /** Whether the embeddings are normalized. */
     normalized: boolean;
     encodingFormat: MixedbreadAI.EmbeddingsResponseEncodingFormat;
     dimensions?: number;

@@ -12,13 +12,13 @@ export const MultipleEncodingsEmbedding: core.serialization.ObjectSchema<
 > = core.serialization.object({
     embedding: core.serialization.lazyObject(async () => (await import("..")).MultipleEncodingsEmbeddingItem),
     index: core.serialization.number(),
-    object: core.serialization.lazy(async () => (await import("..")).ObjectType).optional(),
+    object: core.serialization.stringLiteral("embedding_dict"),
 });
 
 export declare namespace MultipleEncodingsEmbedding {
     interface Raw {
         embedding: serializers.MultipleEncodingsEmbeddingItem.Raw;
         index: number;
-        object?: serializers.ObjectType.Raw | null;
+        object: "embedding_dict";
     }
 }

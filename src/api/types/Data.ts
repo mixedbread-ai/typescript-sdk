@@ -5,6 +5,6 @@
 import * as MixedbreadAI from "..";
 
 /**
- * The created embeddings
+ * The created embeddings.
  */
 export type Data = MixedbreadAI.Embedding[] | MixedbreadAI.MultipleEncodingsEmbedding[];

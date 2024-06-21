@@ -6,14 +6,14 @@ import * as MixedbreadAI from "..";
 
 export type MultiModalInput =
     /**
-     * The text input document to create embeddings for */
+     * The text input document to create embeddings for. */
     | string
     /**
-     * The text input documents to create embeddings for */
+     * The text input documents to create embeddings for. */
     | string[]
     /**
-     * The text input document to create embeddings for */
+     * The text input document to create embeddings for. */
     | MixedbreadAI.TextDocument
     /**
-     * The text input documents to create embeddings for */
+     * The text input documents to create embeddings for. */
     | MixedbreadAI.TextDocument[];

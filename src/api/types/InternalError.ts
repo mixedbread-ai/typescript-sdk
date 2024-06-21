@@ -5,7 +5,7 @@
 import * as MixedbreadAI from "..";
 
 export interface InternalError {
-    type?: string;
+    type?: "server_error";
     url?: string;
     message?: string;
     details?: MixedbreadAI.MxbaiApiErrorDetails;

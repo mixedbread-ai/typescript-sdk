@@ -4,8 +4,8 @@
 
 export type MultiModalRerankingInput =
     /**
-     * The text input documents to rerank */
+     * The text input documents to rerank. */
     | string[]
     /**
-     * The JSON inputs to rerank */
+     * The JSON inputs to rerank. */
     | Record<string, unknown>[];

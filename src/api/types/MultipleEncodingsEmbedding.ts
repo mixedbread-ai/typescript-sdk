@@ -7,8 +7,7 @@ import * as MixedbreadAI from "..";
 export interface MultipleEncodingsEmbedding {
     /** The encoded embedding data by encoding format. Returned, if more than one encoding format is used. */
     embedding: MixedbreadAI.MultipleEncodingsEmbeddingItem;
-    /** The index of the embedding */
+    /** The index of the embedding. */
     index: number;
-    /** The object type of the embedding */
-    object?: MixedbreadAI.ObjectType;
+    object: "embedding_dict";
 }

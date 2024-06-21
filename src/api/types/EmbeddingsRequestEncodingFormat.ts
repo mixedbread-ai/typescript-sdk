@@ -6,8 +6,8 @@ import * as MixedbreadAI from "..";
 
 export type EmbeddingsRequestEncodingFormat =
     /**
-     * The encoding format of the embeddings */
+     * The encoding format of the embeddings. */
     | MixedbreadAI.EncodingFormat
     /**
-     * The encoding formats of the embeddings */
+     * The encoding formats of the embeddings. */
     | MixedbreadAI.EncodingFormat[];

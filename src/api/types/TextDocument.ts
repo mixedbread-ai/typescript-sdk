@@ -3,6 +3,7 @@
  */
 
 export interface TextDocument {
+    type?: "text";
     /** The text to be processed */
     text: string;
 }

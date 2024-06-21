@@ -7,7 +7,7 @@ import * as MixedbreadAI from "../..";
 /**
  * @example
  *     {
- *         model: "model",
+ *         model: "mixedbread-ai/mxbai-rerank-large-v1",
  *         query: {
  *             text: "text"
  *         },
@@ -17,14 +17,14 @@ import * as MixedbreadAI from "../..";
  *     }
  */
 export interface RerankingRequest {
-    /** The model to use for reranking documents */
-    model: string;
-    /** The query to rerank the documents */
+    /** The model to use for reranking documents. */
+    model?: string;
+    /** The query to rerank the documents. */
     query: MixedbreadAI.Query;
     input: MixedbreadAI.MultiModalRerankingInput;
     rankFields?: string[];
-    /** The number of documents to return */
+    /** The number of documents to return. */
     topK?: number;
-    /** Whether to return the documents */
+    /** Whether to return the documents. */
     returnInput?: boolean;
 }
