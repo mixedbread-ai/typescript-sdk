@@ -1,2 +1,2 @@
-export { EmbeddingsRequest } from "./EmbeddingsRequest";
-export { RerankingRequest } from "./RerankingRequest";
+export { type EmbeddingsRequest } from "./EmbeddingsRequest";
+export { type RerankingRequest } from "./RerankingRequest";

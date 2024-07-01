@@ -4,10 +4,10 @@
 
 import * as environments from "./environments";
 import * as core from "./core";
-import * as MixedbreadAI from "./api";
-import * as serializers from "./serialization";
+import * as MixedbreadAI from "./api/index";
+import * as serializers from "./serialization/index";
 import urlJoin from "url-join";
-import * as errors from "./errors";
+import * as errors from "./errors/index";
 
 export declare namespace MixedbreadAIClient {
     interface Options {
@@ -18,6 +18,7 @@ export declare namespace MixedbreadAIClient {
     interface RequestOptions {
         timeoutInSeconds?: number;
         maxRetries?: number;
+        abortSignal?: AbortSignal;
     }
 }
 
@@ -26,6 +27,10 @@ export class MixedbreadAIClient {
 
     /**
      * Create embeddings for text or images using the specified model, encoding format, and normalization.
+     *
+     * @param {MixedbreadAI.EmbeddingsRequest} request
+     * @param {MixedbreadAIClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link MixedbreadAI.BadRequestError}
      * @throws {@link MixedbreadAI.UnauthorizedError}
      * @throws {@link MixedbreadAI.ForbiddenError}
@@ -37,8 +42,7 @@ export class MixedbreadAIClient {
      * @example
      *     await mixedbreadAi.embeddings({
      *         model: "mixedbread-ai/mxbai-embed-large-v1",
-     *         input: "This is a sample text input.",
-     *         normalized: true
+     *         input: "This is a sample text input."
      *     })
      */
     public async embeddings(
@@ -52,15 +56,16 @@ export class MixedbreadAIClient {
             ),
             method: "POST",
             headers: {
-                Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
             body: await serializers.EmbeddingsRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return await serializers.EmbeddingsResponse.parseOrThrow(_response.body, {
@@ -168,6 +173,9 @@ export class MixedbreadAIClient {
     }
 
     /**
+     * @param {MixedbreadAI.RerankingRequest} request
+     * @param {MixedbreadAIClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link MixedbreadAI.BadRequestError}
      * @throws {@link MixedbreadAI.UnauthorizedError}
      * @throws {@link MixedbreadAI.ForbiddenError}
@@ -178,13 +186,10 @@ export class MixedbreadAIClient {
      *
      * @example
      *     await mixedbreadAi.reranking({
-     *         model: "mixedbread-ai/mxbai-rerank-large-v1",
      *         query: {
      *             text: "text"
      *         },
-     *         input: ["input"],
-     *         topK: 10,
-     *         returnInput: false
+     *         input: ["Document 1", "Document 2"]
      *     })
      */
     public async reranking(
@@ -198,15 +203,16 @@ export class MixedbreadAIClient {
             ),
             method: "POST",
             headers: {
-                Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
             body: await serializers.RerankingRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return await serializers.RerankingResponse.parseOrThrow(_response.body, {
@@ -313,8 +319,8 @@ export class MixedbreadAIClient {
         }
     }
 
-    protected async _getAuthorizationHeader() {
-        const value = await core.Supplier.get(this._options.apiKey);
-        return value;
+    protected async _getCustomAuthorizationHeaders() {
+        const apiKeyValue = await core.Supplier.get(this._options.apiKey);
+        return { Authorization: apiKeyValue };
     }
 }

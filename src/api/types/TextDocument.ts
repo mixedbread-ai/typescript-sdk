@@ -3,6 +3,7 @@
  */
 
 export interface TextDocument {
+    /** The type of the document */
     type?: "text";
     /** The text to be processed */
     text: string;

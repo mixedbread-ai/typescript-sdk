@@ -7,5 +7,6 @@ export interface Usage {
     promptTokens: number;
     /** The total number of tokens used */
     totalTokens: number;
+    /** The number of tokens used for the completion */
     completionTokens?: number;
 }
