@@ -40,7 +40,7 @@ export class MixedbreadAIClient {
      * @throws {@link MixedbreadAI.InternalServerError}
      *
      * @example
-     *     await mixedbreadAi.embeddings({
+     *     await client.embeddings({
      *         model: "mixedbread-ai/mxbai-embed-large-v1",
      *         input: "This is a sample text input."
      *     })
@@ -185,7 +185,7 @@ export class MixedbreadAIClient {
      * @throws {@link MixedbreadAI.InternalServerError}
      *
      * @example
-     *     await mixedbreadAi.reranking({
+     *     await client.reranking({
      *         query: {
      *             text: "text"
      *         },
