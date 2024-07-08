@@ -1,6 +1,6 @@
 {
   "name": "@mixedbread-ai/sdk",
-  "version": "2.2.8",
+  "version": "2.2.9",
   "license": "Apache-2.0",
   "description": "SDK for mixedbread.ai",
   "author": "mixedbread.ai",
@@ -8,25 +8,12 @@
     "type": "git",
     "url": "https://github.com/mixedbread-ai/typescript-sdk.git"
   },
-  "main": "./dist/src/index.js",
-  "module": "./dist/esm/src/index.js",
-  "types": "./dist/src/index.d.ts",
-  "exports": {
-    ".": {
-      "import": "./dist/esm/src/index.js",
-      "require": "./dist/src/index.js",
-      "types": "./dist/src/index.d.ts"
-    }
-  },
-  "files": [
-    "dist",
-    "src"
-  ],
-  "sideEffects": false,
+  "main": "./index.js",
+  "types": "./index.d.ts",
   "scripts": {
     "format": "prettier --write 'src/**/*.ts'",
-    "build": "tsc && tsc -p tsconfig.esm.json",
-    "prepack": "npm run build"
+    "build": "tsc",
+    "prepack": "cp -rv dist/. ."
   },
   "dependencies": {
     "form-data": "4.0.0",
