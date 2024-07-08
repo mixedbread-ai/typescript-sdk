@@ -1,6 +1,6 @@
 {
   "name": "@mixedbread-ai/sdk",
-  "version": "2.2.6",
+  "version": "2.2.7",
   "license": "Apache-2.0",
   "description": "SDK for mixedbread.ai",
   "author": "mixedrbread.ai",
@@ -11,6 +11,12 @@
   "main": "./dist/src/index.js",
   "typings": "./dist/src/index.d.ts",
   "module": "./dist/esm/src/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/src/index.js",
+      "require": "./dist/src/index.js"
+    }
+  },
   "sideEffects": false,
   "scripts": {
     "format": "prettier --write 'src/**/*.ts'",
