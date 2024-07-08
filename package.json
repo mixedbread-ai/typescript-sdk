@@ -1,6 +1,6 @@
 {
   "name": "@mixedbread-ai/sdk",
-  "version": "2.2.9",
+  "version": "2.2.10",
   "license": "Apache-2.0",
   "description": "SDK for mixedbread.ai",
   "author": "mixedbread.ai",
@@ -8,20 +8,20 @@
     "type": "git",
     "url": "https://github.com/mixedbread-ai/typescript-sdk.git"
   },
-  "main": "./index.js",
-  "types": "./index.d.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "format": "prettier --write 'src/**/*.ts'",
     "build": "tsc",
     "prepack": "cp -rv dist/. ."
   },
   "dependencies": {
+    "url-join": "4.0.1",
     "form-data": "4.0.0",
     "formdata-node": "^6.0.3",
-    "js-base64": "3.7.7",
-    "node-fetch": "3.3.2",
-    "qs": "6.12.1",
-    "url-join": "5.0.0"
+    "node-fetch": "2.7.0",
+    "qs": "6.11.2",
+    "js-base64": "3.7.2"
   },
   "devDependencies": {
     "@types/url-join": "4.0.3",
