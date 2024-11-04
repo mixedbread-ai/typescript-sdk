@@ -106,11 +106,11 @@ Replace `"{YOUR_API_KEY}"` with your actual API key. If you don't have an API ke
 ## Error Handling and Retries
 The SDK will throw an error if there is an issue with the API request, such as an invalid API key or a network error. Make sure to handle these errors in your code using try/catch blocks or `.catch()` on promises.
 
-a subclass of [FernError](./src/errors/MxbaiApiError.ts)
+a subclass of [FernError](./src/errors/MixedbreadAIError.ts)
 will be thrown:
 
 ```ts
-import { MxbaiApiError } from "@mixedbread-ai/sdk";
+import { MixedbreadAIError } from "@mixedbread-ai/sdk";
 
 try {
   await mxbai.embeddings({
@@ -120,7 +120,7 @@ try {
     maxRetries: 3,
   });
 } catch (err) {
-  if (err instanceof MxbaiApiError) {
+  if (err instanceof MixedbreadAIError) {
     console.log(err.statusCode); 
     console.log(err.message);
     console.log(err.body); 
